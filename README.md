@@ -15,7 +15,7 @@ NOAA/SWPC Data, ADS Data
 ## Deployment
  [Github Repo](https://github.com/Andromeda-App/andromedaSG)  
    
- [Heroku Deployemnt](linkgoeshere.com)  
+ [Heroku Deployemnt](https://andromedastargazer.herokuapp.com/)  
  
  
 ## Team

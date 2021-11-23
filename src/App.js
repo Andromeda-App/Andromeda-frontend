@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import API from "./utils/API"
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
-import { BrowserRouter as Router, Routes, Route, Link, Redirect } from "react-router-dom"
+import Navbar from './components/NavBar';
+import { BrowserRouter as BrowserRouter, Routes, Route, Link, Redirect } from "react-router-dom"
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
@@ -112,34 +113,42 @@ function App() {
   }
 
   return (
-
-    <Router>
-      {!userState.email ? (
-        <div>
-          {/* Show Login Form if not Logged In */}
-          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
-          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
-        </div>
-      ) : (
-        //Otherwise show user page
-        <div>
-          <h1>Read to go stargazing, {userState.email}?</h1>
-          <button onClick={logMeOut}>Logout</button>
-          <Link to="/">Home</Link>
-          <Link to={`/profile/${userState.id}`}>Profile</Link>
-        </div>
-      )}
-      <Routes>
-        {/* <Route exact path="/">
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route exact path='/' element={<Home />} user={userState} token={token} />
+          <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
+          <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
+        </Routes>
+      </div>
+    </BrowserRouter>);
+    // <Router>
+      {/* {!userState.email ? ( */ }
+  {/* <div> */ }
+  {/* Show Login Form if not Logged In */ }
+  {/* <div class="navBar">Andromeda</div> */ }
+  {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */ }
+  {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */ }
+  {/* </div> */ }
+  {/* ) : ( */ }
+  {/* //Otherwise show user page */ }
+  {/* <div> */ }
+  {/* <h1>Read to go stargazing, {userState.email}?</h1> */ }
+  {/* <button onClick={logMeOut}>Logout</button> */ }
+  {/* <Link to="/">Home</Link> */ }
+  {/* <Link to={`/profile/${userState.id}`}>Profile</Link> */ }
+  {/* </div> */ }
+  {/* )} */ }
+  {/* <Routes>
+        <Route exact path="/">
           <><Home user={userState} token={token} /></>
         </Route>
         <Route exact path="/profile/:id">
           <Profile user={userState} token={token} />
-        </Route> */}
+        </Route>
       </Routes>
-    </Router>
-
-  );
+    </Router> */}
 }
 
 export default App;

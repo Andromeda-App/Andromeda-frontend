@@ -7,17 +7,17 @@ Andromeda is a react based web app to help get the best views while stargazing. 
 
 ## Technologies Used
 
-React for user interface.
-Cloudinary to upload photos (profile page, maybe upload astrophography)
-NOAA/SWPC Data, ADS Data
+React for user interface.  
+Cloudinary to upload photos (profile page, maybe upload astrophography)  
+NOAA/SWPC Data, ADS Data  
 
 
 ## Deployment
  [Github Repo](https://github.com/Andromeda-App/andromedaSG)  
    
- [Heroku Deployemnt](linkgoeshere.com)  
+ [Heroku Deployemnt](https://andromedastargazer.herokuapp.com/)  
  
  
 ## Team
-    Out team consists of Whitney Kropat, Melyssa Dennis, Kelly Pham, and Minhvan Le.
+    Our team consists of Whitney Kropat, Melyssa Dennis, Kelly Pham, and Minhvan Le.
 

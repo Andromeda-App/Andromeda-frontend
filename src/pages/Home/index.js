@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import "./style.css";
-import API from '../../utils/API';
 import Navbar from '../../components/NavBar';
+import API from '../../utils/api.js';
+
 
 
 function Home(props) {

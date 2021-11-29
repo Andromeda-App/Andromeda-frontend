@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {useNavigate} from "react-router-dom";
 import "./style.css"
-import API from '../../utils/API';
+import API from '../../utils/api.js';
 
 export default function Preferences(props) {
     const [userPrefs, setUserPrefs] = useState({

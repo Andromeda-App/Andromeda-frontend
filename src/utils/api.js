@@ -25,6 +25,10 @@ const API = {
                 "Authorization": `Bearer ${token}`
               }
         })
+    },
+    getAPOD:(data)=>{
+        // Here we want to invoke the APOD api to get background image, with a default option to set as assets/background.jpg 
+        return 
     }
 }
 

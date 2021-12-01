@@ -123,8 +123,8 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>);
-    // <Router>
-      {/* {!userState.email ? ( */ }
+  // <Router>
+  {/* {!userState.email ? ( */ }
   {/* <div> */ }
   {/* Show Login Form if not Logged In */ }
   {/* <div class="navBar">Andromeda</div> */ }

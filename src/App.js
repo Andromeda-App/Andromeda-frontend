@@ -8,6 +8,7 @@ import { BrowserRouter as BrowserRouter, Routes, Route, Link, Redirect } from "r
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
+import './App.css'
 
 function App() {
   // User Login
@@ -27,6 +28,12 @@ function App() {
     email: "",
     password: ""
   })
+  // Navbar
+  return (
+    <div className="App">
+      <Navbar />
+    </div>
+  )
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");

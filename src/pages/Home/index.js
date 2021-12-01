@@ -5,16 +5,16 @@ import Navbar from '../../components/NavBar';
 
 
 function Home(props) {
-    const [background,setBackground] = useState([])
-    const getBackground = ()=>{
-        API.getAPOD().then(res=>{
-            // TODO Work on APOD API
-            setBackground(res.data);
-        })
-    };    
-    useEffect(()=>{
-        getBackground()
-     },[])
+    // const [background,setBackground] = useState([])
+    // const getBackground = ()=>{
+    //     API.getAPOD().then(res=>{
+    //         // TODO Work on APOD API
+    //         setBackground(res.data);
+    //     })
+    // };    
+    // useEffect(()=>{
+    //     getBackground()
+    //  },[])
 
     const [user, setUser] = useState([])
     useEffect(()=>{

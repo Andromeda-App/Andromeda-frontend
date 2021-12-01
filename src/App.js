@@ -8,6 +8,7 @@ import { BrowserRouter as BrowserRouter, Routes, Route, Link, Redirect } from "r
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
+import './App.css'
 
 function App() {
   // User Login
@@ -27,6 +28,12 @@ function App() {
     email: "",
     password: ""
   })
+  // Navbar
+  return (
+    <div className="App">
+      <Navbar />
+    </div>
+  )
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -114,6 +121,19 @@ function App() {
 
   return (
     <BrowserRouter>
+      {!userState.email ? (
+        <div>
+          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+        </div>
+      ) : (
+        <div>
+          <h1>Ready to go stargazing, {userState.user_name}?</h1>
+          <button onClick={logMeOut}>Logout</button>
+          <Link to="/">Home</Link>
+          <Link to={`/profile/${userState.id}`}>Profile</Link>
+        </div>
+      )}
       <div className="App">
         <Navbar />
         <Routes>
@@ -123,6 +143,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>);
+<<<<<<< HEAD
   // <Router>
   {/* {!userState.email ? ( */ }
   {/* <div> */ }
@@ -149,6 +170,8 @@ function App() {
         </Route>
       </Routes>
     </Router> */}
+=======
+>>>>>>> dev
 }
 
 export default App;

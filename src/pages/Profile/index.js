@@ -22,28 +22,55 @@ function Profile(props) {
             }
         })
     }
+    // Lunar Events
+    // 
+
+    const [moon, setMoon] = useState({
+        moonrise:"",
+        peak:"",
+        moonset:"",
+        phase:""
+    })
+
     return (
         // <Navbar></Navbar>
         <div>
             {/* Commented out so we can see things without having signin working */}
         {/* {!user.email?<h1>No such user!</h1>:( */}
         <div>
-            <h1>{user.email}'s profile!</h1>
+            <h1>Get ready for some top-tier stargazing, {user.name}!</h1>
             <div class="eventCard">
                 <h2>Upcoming Meteor Showers:</h2>
-                <div class="cardContent" id="meteorCard">Information Goes Here!</div> 
+                <div class="cardImage" id="meteorImage"></div>
+                <div class="cardContent" id="meteorCard">
+                    <h3 id="meteorTitle">Geminid Mete</h3>
+                    <p id="meteorText"></p>
+                </div> 
             </div>
             <div class="eventCard">
                 <h2>Aurora Forecast</h2>
+                <img src="./moon.jpg"/>
                 <div id="AuroraCard">Information Goes Here!</div> 
             </div>
+
             <div class="eventCard">
                 <h2>Lunar Events</h2>
-                <div id="moonCard">Information Goes Here!</div>  
+                <img src="" alt="moon phase" id="moonPhase"/>
+                <div id="moonCard">
+                    Moonrise:<span id="moonrise"></span>
+                    Moonset:<span id="moonset"></span>
+                </div>  
+            </div>
+
+            <div class="eventCard">
+                <h2>Eclipse Alert</h2>
+                <div id="eclipseCard">The next lunar eclipse at this location
+                
+                </div>
             </div>
             <div class="eventCard">
-                <h2>Eclipse Alert!</h2>
-                <div id="eclipseCard">Information Goes Here!</div>
+                <h2>ISS Flyover</h2>
+                <div id="issCard">Information Goes Here!</div>
             </div>
         </div>
         {/* )} */}

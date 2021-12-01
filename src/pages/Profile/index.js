@@ -22,6 +22,16 @@ function Profile(props) {
             }
         })
     }
+    // Lunar Events
+    // 
+
+    const [moon, setMoon] = useState({
+        moonrise:"",
+        peak:"",
+        moonset:"",
+        phase:""
+    })
+
     return (
         // <Navbar></Navbar>
         <div>
@@ -33,20 +43,30 @@ function Profile(props) {
                 <h2>Upcoming Meteor Showers:</h2>
                 <div class="cardImage" id="meteorImage"></div>
                 <div class="cardContent" id="meteorCard">
-                    Information Goes Here!
+                    <h3 id="meteorTitle">Geminid Mete</h3>
+                    <p id="meteorText"></p>
                 </div> 
             </div>
             <div class="eventCard">
                 <h2>Aurora Forecast</h2>
+                <img src="./moon.jpg"/>
                 <div id="AuroraCard">Information Goes Here!</div> 
             </div>
+
             <div class="eventCard">
                 <h2>Lunar Events</h2>
-                <div id="moonCard">Information Goes Here!</div>  
+                <img src="" alt="moon phase" id="moonPhase"/>
+                <div id="moonCard">
+                    Moonrise:<span id="moonrise"></span>
+                    Moonset:<span id="moonset"></span>
+                </div>  
             </div>
+
             <div class="eventCard">
                 <h2>Eclipse Alert</h2>
-                <div id="eclipseCard">Information Goes Here!</div>
+                <div id="eclipseCard">The next lunar eclipse at this location
+                
+                </div>
             </div>
             <div class="eventCard">
                 <h2>ISS Flyover</h2>

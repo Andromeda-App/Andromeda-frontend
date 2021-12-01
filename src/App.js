@@ -114,6 +114,19 @@ function App() {
 
   return (
     <BrowserRouter>
+      {!userState.email ? (
+        <div>
+          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+        </div>
+      ) : (
+        <div>
+          <h1>Ready to go stargazing, {userState.user_name}?</h1>
+          <button onClick={logMeOut}>Logout</button>
+          <Link to="/">Home</Link>
+          <Link to={`/profile/${userState.id}`}>Profile</Link>
+        </div>
+      )}
       <div className="App">
         <Navbar />
         <Routes>
@@ -123,32 +136,6 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>);
-    // <Router>
-      {/* {!userState.email ? ( */ }
-  {/* <div> */ }
-  {/* Show Login Form if not Logged In */ }
-  {/* <div class="navBar">Andromeda</div> */ }
-  {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */ }
-  {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */ }
-  {/* </div> */ }
-  {/* ) : ( */ }
-  {/* //Otherwise show user page */ }
-  {/* <div> */ }
-  {/* <h1>Read to go stargazing, {userState.email}?</h1> */ }
-  {/* <button onClick={logMeOut}>Logout</button> */ }
-  {/* <Link to="/">Home</Link> */ }
-  {/* <Link to={`/profile/${userState.id}`}>Profile</Link> */ }
-  {/* </div> */ }
-  {/* )} */ }
-  {/* <Routes>
-        <Route exact path="/">
-          <><Home user={userState} token={token} /></>
-        </Route>
-        <Route exact path="/profile/:id">
-          <Profile user={userState} token={token} />
-        </Route>
-      </Routes>
-    </Router> */}
 }
 
 export default App;

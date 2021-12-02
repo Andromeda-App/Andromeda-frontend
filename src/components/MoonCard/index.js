@@ -41,7 +41,7 @@ export default function moonData(props) {
     }
 
     return (
-        <div class="eventCard">
+        <div className="eventCard">
             <h2>Lunar Events</h2>
             <img src="" alt="moon phase" id="moonPhase" />
             <div id="moonCard">

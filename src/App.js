@@ -140,6 +140,8 @@ function App() {
           <Route exact path='/' element={<Home />} user={userState} token={token} />
           <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/nasaphoto" element={<NasaPhoto />}></Route>
         </Routes>
       </div>
     </BrowserRouter>);

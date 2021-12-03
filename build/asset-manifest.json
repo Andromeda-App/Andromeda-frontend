@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Andromeda-App/andromedaSGstatic/css/main.6e9803cb.chunk.css",
+    "main.js": "/Andromeda-App/andromedaSGstatic/js/main.bc9caee4.chunk.js",
+    "main.js.map": "/Andromeda-App/andromedaSGstatic/js/main.bc9caee4.chunk.js.map",
+    "runtime-main.js": "/Andromeda-App/andromedaSGstatic/js/runtime-main.9a20efed.js",
+    "runtime-main.js.map": "/Andromeda-App/andromedaSGstatic/js/runtime-main.9a20efed.js.map",
+    "static/js/2.98917b70.chunk.js": "/Andromeda-App/andromedaSGstatic/js/2.98917b70.chunk.js",
+    "static/js/2.98917b70.chunk.js.map": "/Andromeda-App/andromedaSGstatic/js/2.98917b70.chunk.js.map",
+    "static/js/3.2ca46883.chunk.js": "/Andromeda-App/andromedaSGstatic/js/3.2ca46883.chunk.js",
+    "static/js/3.2ca46883.chunk.js.map": "/Andromeda-App/andromedaSGstatic/js/3.2ca46883.chunk.js.map",
+    "index.html": "/Andromeda-App/andromedaSGindex.html",
+    "static/css/main.6e9803cb.chunk.css.map": "/Andromeda-App/andromedaSGstatic/css/main.6e9803cb.chunk.css.map",
+    "static/js/2.98917b70.chunk.js.LICENSE.txt": "/Andromeda-App/andromedaSGstatic/js/2.98917b70.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a20efed.js",
+    "static/js/2.98917b70.chunk.js",
+    "static/css/main.6e9803cb.chunk.css",
+    "static/js/main.bc9caee4.chunk.js"
+  ]
+}

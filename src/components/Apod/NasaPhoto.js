@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import NavBar from "./NavBar";
-// import background from url("https://apod.nasa.gov/apod/image/2112/BlueRedMoon_Yu_960.jpg")
 
 const apiKey = process.env.REACT_APP_NASA_KEY;
-// const url = `("https://apod.nasa.gov/apod/image/2112/BlueRedMoon_Yu_960.jpg")`
-// const url = photoData.url
 const backUpPicture = `<div class="video-div"> <img id="backUpImage" src="../../assets/background.jpg" frameborder="0" /></div>`
 
 export default function NasaPhoto() {

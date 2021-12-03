@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
 import './App.css'
+import Donki from "./Donki"
 
 function App() {
   // User Login
@@ -28,12 +29,6 @@ function App() {
     email: "",
     password: ""
   })
-  // Navbar
-  return (
-    <div className="App">
-      <Navbar />
-    </div>
-  )
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -119,6 +114,20 @@ function App() {
     localStorage.removeItem("token")
   }
 
+  const [donki, setDonki] = useState()
+
+
+  useEffect(() => {
+    Donki.getDonki().then(donkiData => {
+      console.log(donkiData.data)
+      if (donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
+        setDonki("No upcoming event")
+      } else {
+        setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
+      }
+    })
+  }, [])
+
   return (
     <BrowserRouter>
       {!userState.email ? (
@@ -132,6 +141,27 @@ function App() {
           <button onClick={logMeOut}>Logout</button>
           <Link to="/">Home</Link>
           <Link to={`/profile/${userState.id}`}>Profile</Link>
+          <div style={{ maxWidth: 900, padding: 30 }}>
+            {donki && (
+              <article>
+                <header>
+                  {donki}
+                </header>
+                {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
+                {/* <p>{donki.explanation}</p> */}
+                <pre
+                  style={{
+                    overflowX: "auto",
+                    whiteSpace: "pre-wrap",
+                    wordWrap: "break-word",
+                  }}
+                >
+                  <hr />
+                  {JSON.stringify(donki, null, 2)}
+                </pre>
+              </article>
+            )}
+          </div>
         </div>
       )}
       <div className="App">
@@ -145,6 +175,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>);
+
 }
 
 export default App;

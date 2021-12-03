@@ -10,6 +10,7 @@ import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
 import './App.css'
 import Donki from "./Donki"
+import NasaPhoto from './components/Apod/NasaPhoto';
 
 function App() {
   // User Login
@@ -170,8 +171,8 @@ function App() {
           <Route exact path='/' element={<Home />} user={userState} token={token} />
           <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/nasaphoto" element={<NasaPhoto />}></Route>
+          {/* <Route path="/" element={<Home />}></Route> */}
+          {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
         </Routes>
       </div>
     </BrowserRouter>);

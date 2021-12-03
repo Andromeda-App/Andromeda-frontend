@@ -1,0 +1,9 @@
+/* Profile Page Style Sheet */
+
+.eventCard {
+    /* background-color: aqua; */
+}
+
+#meteorImage {
+    background-image:url("../../assets/meteor.jpg");
+}

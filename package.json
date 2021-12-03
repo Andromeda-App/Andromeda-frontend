@@ -1,5 +1,6 @@
 {
   "name": "andromedastargazer",
+  "homepage": "https://andromedastargazer.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,7 +11,8 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "classnames": "^2.3.1",
-    "google-map-react": "^2.1.10",
+    "dotenv": "^10.0.0",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
@@ -19,6 +21,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
@@ -59,6 +63,5 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Andromeda-App/andromedaSG/issues"
-  },
-  "homepage": "https://github.com/Andromeda-App/andromedaSG#readme"
+  }
 }

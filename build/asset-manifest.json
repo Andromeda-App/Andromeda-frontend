@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.css": "/Andromeda-App/andromedaSGstatic/css/main.6e9803cb.chunk.css",
     "main.js": "/Andromeda-App/andromedaSGstatic/js/main.bc9caee4.chunk.js",
     "main.js.map": "/Andromeda-App/andromedaSGstatic/js/main.bc9caee4.chunk.js.map",
@@ -18,5 +19,26 @@
     "static/js/2.98917b70.chunk.js",
     "static/css/main.6e9803cb.chunk.css",
     "static/js/main.bc9caee4.chunk.js"
+=======
+    "main.css": "/Andromeda-App/andromedaSGstatic/css/main.da6941f2.chunk.css",
+    "main.js": "/Andromeda-App/andromedaSGstatic/js/main.deef4b37.chunk.js",
+    "main.js.map": "/Andromeda-App/andromedaSGstatic/js/main.deef4b37.chunk.js.map",
+    "runtime-main.js": "/Andromeda-App/andromedaSGstatic/js/runtime-main.881b4b6a.js",
+    "runtime-main.js.map": "/Andromeda-App/andromedaSGstatic/js/runtime-main.881b4b6a.js.map",
+    "static/js/2.8fd5fd41.chunk.js": "/Andromeda-App/andromedaSGstatic/js/2.8fd5fd41.chunk.js",
+    "static/js/2.8fd5fd41.chunk.js.map": "/Andromeda-App/andromedaSGstatic/js/2.8fd5fd41.chunk.js.map",
+    "static/js/3.910762d5.chunk.js": "/Andromeda-App/andromedaSGstatic/js/3.910762d5.chunk.js",
+    "static/js/3.910762d5.chunk.js.map": "/Andromeda-App/andromedaSGstatic/js/3.910762d5.chunk.js.map",
+    "index.html": "/Andromeda-App/andromedaSGindex.html",
+    "static/css/main.da6941f2.chunk.css.map": "/Andromeda-App/andromedaSGstatic/css/main.da6941f2.chunk.css.map",
+    "static/js/2.8fd5fd41.chunk.js.LICENSE.txt": "/Andromeda-App/andromedaSGstatic/js/2.8fd5fd41.chunk.js.LICENSE.txt",
+    "static/media/style.css": "/Andromeda-App/andromedaSGstatic/media/meteor.a4eb552b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.881b4b6a.js",
+    "static/js/2.8fd5fd41.chunk.js",
+    "static/css/main.da6941f2.chunk.css",
+    "static/js/main.deef4b37.chunk.js"
+>>>>>>> fb26e951ab7ecb1de8986b60f83f38ad13318aee
   ]
 }

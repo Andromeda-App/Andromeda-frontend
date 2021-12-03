@@ -1,8 +1,9 @@
 import axios from "axios";
 // Local for testing:
-const URL_PREFIX = "http://localhost:3001"
-// Deploy at:
-// const URL_PREFIX = "https://reactauthdemo-back.herokuapp.com"
+// const URL_PREFIX = "http://localhost:3001"
+// Deploy at:"https://reactauthdemo-back.herokuapp.com"
+
+const URL_PREFIX = process.env.URL_PREFIX 
 
 const API = {
     getProfile: (tkn)=>{

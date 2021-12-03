@@ -8,6 +8,7 @@ import { BrowserRouter as BrowserRouter, Routes, Route, Link } from "react-route
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
+<<<<<<< HEAD
 // kp Map & axios
 import Map from "./components/IssCard/Map";
 // import axios from 'axios';
@@ -60,6 +61,11 @@ import Map from "./components/IssCard/Map";
 //   </div>
 // }
 // kp TRY 1
+=======
+import './App.css'
+import Donki from "./Donki"
+import NasaPhoto from './components/Apod/NasaPhoto';
+>>>>>>> fb26e951ab7ecb1de8986b60f83f38ad13318aee
 
 function App() {
   // User Login
@@ -79,12 +85,15 @@ function App() {
     email: "",
     password: ""
   })
+<<<<<<< HEAD
   // Navbar
   // return (
   //   <div className="App">
   //     <Navbar />
   //   </div>
   // )
+=======
+>>>>>>> fb26e951ab7ecb1de8986b60f83f38ad13318aee
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -170,6 +179,20 @@ function App() {
     localStorage.removeItem("token")
   }
 
+  const [donki, setDonki] = useState()
+
+
+  useEffect(() => {
+    Donki.getDonki().then(donkiData => {
+      console.log(donkiData.data)
+      if (donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
+        setDonki("No upcoming event")
+      } else {
+        setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
+      }
+    })
+  }, [])
+
   return (
     <BrowserRouter>
       {!userState.email ? (
@@ -183,6 +206,7 @@ function App() {
           <button onClick={logMeOut}>Logout</button>
           <Link to="/">Home</Link>
           <Link to={`/profile/${userState.id}`}>Profile</Link>
+<<<<<<< HEAD
           <div className="App">
       <h3>ISS Tracker</h3>
       <Map />
@@ -190,6 +214,29 @@ function App() {
 
   );
           <Map></Map>
+=======
+          <div style={{ maxWidth: 900, padding: 30 }}>
+            {donki && (
+              <article>
+                <header>
+                  {donki}
+                </header>
+                {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
+                {/* <p>{donki.explanation}</p> */}
+                <pre
+                  style={{
+                    overflowX: "auto",
+                    whiteSpace: "pre-wrap",
+                    wordWrap: "break-word",
+                  }}
+                >
+                  <hr />
+                  {JSON.stringify(donki, null, 2)}
+                </pre>
+              </article>
+            )}
+          </div>
+>>>>>>> fb26e951ab7ecb1de8986b60f83f38ad13318aee
         </div>
 
         
@@ -200,10 +247,13 @@ function App() {
           <Route exact path='/' element={<Home />} user={userState} token={token} />
           <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
+          {/* <Route path="/" element={<Home />}></Route> */}
+          {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
         </Routes>
  
       </div>
     </BrowserRouter>);
+
 }
 
 export default App;

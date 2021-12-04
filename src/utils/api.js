@@ -12,7 +12,7 @@ const API = {
       }})
     },
     login:(usrData)=>{
-        return axios.post(`https://andromedastargazer.herokuapp.com/login`,usrData)
+        return axios.post(`${URL_PREFIX}/login`,usrData)
     },
     signup:(usrData)=>{
         return axios.post(`${URL_PREFIX}/signup`,usrData)

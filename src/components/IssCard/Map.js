@@ -4,13 +4,14 @@
 
 import GoogleMapReact from 'google-map-react'
 import React from "react";
+import ISS_IMG from "../../assets/Images/64px-International_Space_Station_(Expedition_58_Patch).svg.png";
 // import { useSearchParams } from 'react-router-dom'
 // import iss from '../../assets/Images/International_Space_Station_white.svg.png'
 
 const ISS_URL = "http://api.open-notify.org/iss-now.json"
-// const MAP_KEY = process.env.REACT_APP_MAP_KEY
-const img = <img src = "../../assets/Images/International_Space_Station_white.svg.png" alt = "iss" height = "30px"/>
-const SpaceStation = ({ img }) => <div>{img}</div>
+const MAP_KEY = process.env.REACT_APP_MAP_KEY
+const img = <img src = {ISS_IMG} alt = "iss" height = "30px"/>
+const SpaceStation = () => <div className="findme">{img}</div>
 
 class Map extends React.Component{
     state = {
@@ -47,7 +48,7 @@ class Map extends React.Component{
         return(
             <div>
                 <p>Latitude: {this.state.center.lat}</p>
-                <p>Longitude: {}</p>
+                <p>Longitude: {this.state.center.lng}</p>
                 <div className = "map" style={{ height: '100vh', width: '100%' }}>
                     <GoogleMapReact className = "map"
                         bootstrapURLKeys={{key: 'AIzaSyBPEAWkce7s-bwIJV7yMw_5oOt0N1kRPk0' }}

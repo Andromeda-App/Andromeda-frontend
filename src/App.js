@@ -8,64 +8,10 @@ import { BrowserRouter as BrowserRouter, Routes, Route, Link } from "react-route
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
-<<<<<<< HEAD
-// kp Map & axios
-import Map from "./components/IssCard/Map";
-// import axios from 'axios';
-
-// try 2 kp
-// function App() {
-//   return (
-//     <div className="App">
-//       <h3>ISS Tracker</h3>
-//       <Maps />
-//     </div>
-
-//   );
-// }
-
-// try 2 kp
-
-// kp TRY 1
-// function App() {
-//   const [loading, SetLoading] = useState(false)
-//   const [longitude, setLongitude] = useState(122.3321)
-//   const [latitude, setLatitude] = useState(47.6062)
-
-//   useEffect(() => {
-//     getLocation()
-
-//   }, [])
-
-//   const getLocation = async () => {
-//       try {
-//         SetLoading(true)
-//         const res = await axios.get('http://api.open-notify.org/iss-now.json')
-//         const { longitude, latitude } = await res.data.iss_position
-
-//         setLongitude(parseFloat(longitude))
-//         setLatitude(parseFloat(latitude))
-//         SetLoading(false)
-//       }
-//       catch (error) {
-//         throw new Error(error)
-//       }
-//   }
-
-//   return <div className='App'>
-//     {!loading ? (
-//       <IssCard center={{ lat: latitude, lng: longitude }} zoom={6} />
-//     ) : (
-//       <h1>Loading</h1>
-//     )}
-//   </div>
-// }
-// kp TRY 1
-=======
 import './App.css'
 import Donki from "./Donki"
 import NasaPhoto from './components/Apod/NasaPhoto';
->>>>>>> fb26e951ab7ecb1de8986b60f83f38ad13318aee
+import Map from "../src/components/IssCard/Map"
 
 function App() {
   // User Login
@@ -84,16 +30,7 @@ function App() {
   const [signupFormState, setSignupFormState] = useState({
     email: "",
     password: ""
-  })
-<<<<<<< HEAD
-  // Navbar
-  // return (
-  //   <div className="App">
-  //     <Navbar />
-  //   </div>
-  // )
-=======
->>>>>>> fb26e951ab7ecb1de8986b60f83f38ad13318aee
+  });
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -191,7 +128,9 @@ function App() {
         setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
       }
     })
-  }, [])
+  }, []);
+
+    <Map />
 
   return (
     <BrowserRouter>
@@ -206,15 +145,6 @@ function App() {
           <button onClick={logMeOut}>Logout</button>
           <Link to="/">Home</Link>
           <Link to={`/profile/${userState.id}`}>Profile</Link>
-<<<<<<< HEAD
-          <div className="App">
-      <h3>ISS Tracker</h3>
-      <Map />
-    </div>
-
-  );
-          <Map></Map>
-=======
           <div style={{ maxWidth: 900, padding: 30 }}>
             {donki && (
               <article>
@@ -236,10 +166,14 @@ function App() {
               </article>
             )}
           </div>
->>>>>>> fb26e951ab7ecb1de8986b60f83f38ad13318aee
+          {/* iss return */}
+          {/* <div>
+            <h3>ISS Tracker</h3>
+            <Map />
+          </div> */}
         </div>
 
-        
+
       )}
       <div className="App">
         <Navbar />
@@ -249,8 +183,9 @@ function App() {
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
           {/* <Route path="/" element={<Home />}></Route> */}
           {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
+          <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
- 
+
       </div>
     </BrowserRouter>);
 

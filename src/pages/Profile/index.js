@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import {useParams} from "react-router-dom"
 import "./style.css";
-import Navbar from '../../components/NavBar';
+// import Navbar from '../../components/NavBar';
 import API from '../../utils/api.js';
 
 

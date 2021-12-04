@@ -4,13 +4,14 @@ import API from "./utils/api.js"
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Navbar from './components/NavBar';
-import { BrowserRouter as BrowserRouter, Routes, Route, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as BrowserRouter, Routes, Route, Link } from "react-router-dom"
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
 import './App.css'
 import Donki from "./Donki"
 import NasaPhoto from './components/Apod/NasaPhoto';
+import Map from "../src/components/IssCard/Map"
 
 function App() {
   // User Login
@@ -29,7 +30,7 @@ function App() {
   const [signupFormState, setSignupFormState] = useState({
     email: "",
     password: ""
-  })
+  });
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -127,7 +128,9 @@ function App() {
         setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
       }
     })
-  }, [])
+  }, []);
+
+    <Map />
 
   return (
     <BrowserRouter>
@@ -163,7 +166,14 @@ function App() {
               </article>
             )}
           </div>
+          {/* iss return */}
+          {/* <div>
+            <h3>ISS Tracker</h3>
+            <Map />
+          </div> */}
         </div>
+
+
       )}
       <div className="App">
         <Navbar />
@@ -173,7 +183,9 @@ function App() {
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
           {/* <Route path="/" element={<Home />}></Route> */}
           {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
+          <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
+
       </div>
     </BrowserRouter>);
 

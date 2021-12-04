@@ -17,15 +17,15 @@ function Home(props) {
     //     getBackground()
     //  },[])
 
-    const [user, setUser] = useState([])
-    useEffect(()=>{
-       loadUsers()
-    },[])
-    const loadUsers = ()=>{
-        API.getAllUsers().then(res=>{
-            setUser(res.data);
-        })
-    };
+    // const [user, setUser] = useState([])
+    // useEffect(()=>{
+    //    loadUsers()
+    // },[])
+    // const loadUsers = ()=>{
+    //     API.getAllUsers().then(res=>{
+    //         setUser(res.data);
+    //     })
+    // };
 
     return (
         // <Navbar></Navbar>

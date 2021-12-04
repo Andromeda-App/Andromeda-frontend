@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+/* kp */
+.Iss-card-container{
+  height: 100vh;
+  width: 100vw;
+}
+
+.iss-icon {
+  width:40px;
+  height: auto;
+}
+/* kp */
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

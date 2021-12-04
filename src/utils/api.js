@@ -3,7 +3,7 @@ import axios from "axios";
 // const URL_PREFIX = "http://localhost:3001"
 // Deploy at:"https://reactauthdemo-back.herokuapp.com"
 
-const URL_PREFIX = process.env.URL_PREFIX 
+const URL_PREFIX = process.env.REACT_APP_URL_PREFIX 
 
 const API = {
     getProfile: (tkn)=>{
@@ -12,7 +12,7 @@ const API = {
       }})
     },
     login:(usrData)=>{
-        return axios.post(`${URL_PREFIX}/login`,usrData)
+        return axios.post(`https://andromedastargazer.herokuapp.com/login`,usrData)
     },
     signup:(usrData)=>{
         return axios.post(`${URL_PREFIX}/signup`,usrData)

@@ -40,7 +40,9 @@ function Navbar(props) {
         <div className='navlinks'>
           {/* <a href='#'>Login</a>
          <a href='#'>Sign Up</a> */}
-          <Link to='/iss'>ISS Tracker</Link>
+        <Link to="/">Home</Link>
+        <Link to='/iss'>ISS Tracker</Link>
+        <Link to='/nasaphoto'>APOD</Link>
         </div>
       </div>
     </nav>

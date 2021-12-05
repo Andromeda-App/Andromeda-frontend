@@ -52,10 +52,10 @@ export default function SignupForm(props) {
     return (
         <form onSubmit={props.submit} className="SignupForm">
             
-            <input className="form-control p3" onChange={props.change} name="userName" value = {props.signupState.user_name} placeholder="username"/>
-            <input className="form-control p3" onChange={props.change} name="email" value = {props.signupState.email} placeholder="email"/>
-            <input className="form-control p3" onChange={props.change} name="password" value = {props.signupState.password} type="password" placeholder="password"/>
-            <input className="form-control p3" onChange={props.change} name="zipcode" value = {props.signupState.zipCode} placeholder="zipcode"/>
+            <input id="usernameSignup" className="form-control p3" onChange={props.change} name="userName" value = {props.signupState.user_name} placeholder="username"/>
+            <input id="emailSignup" className="form-control p3" onChange={props.change} name="email" value = {props.signupState.email} placeholder="email"/>
+            <input id="passwordSignup" className="form-control p3" onChange={props.change} name="password" value = {props.signupState.password} type="password" placeholder="password"/>
+            <input id="zipcodeSignup" className="form-control p3" onChange={props.change} name="zipcode" value = {props.signupState.zipCode} placeholder="zipcode"/>
             <button className="btn btn-info">Signup!</button>
         </form>
     )

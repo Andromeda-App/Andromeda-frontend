@@ -30,7 +30,6 @@ export default function NasaPhoto() {
                 backgroundPosition: 'center',
                 height: '100vw'
             }}>
-                {/* <NavBar /> */}
                 <div className="nasa-photo">
                     {photoData.media_type === "image" ? (
                         <img

@@ -1,16 +1,27 @@
-import './App.css';
 import React, { useState, useEffect } from "react";
-import API from "./utils/api.js"
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
-import Navbar from './components/NavBar';
-import { BrowserRouter as BrowserRouter, Routes, Route, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as BrowserRouter, Routes, Route, Link } from "react-router-dom"
+
+// Page Imports
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Profile from "./pages/Profile";
-import './App.css'
+
+// Component Imports
 import Donki from "./Donki"
 import NasaPhoto from './components/Apod/NasaPhoto';
+import Map from "../src/components/IssCard/Map"
+import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
+import Navbar from './components/NavBar';
+import API from "./utils/api.js"
+
+//Bootstrap components
+import './App.css'
+import Button from 'react-bootstrap/Button';
+import Container from "react-bootstrap/Container";
+//import { LinkContainer } from "react-router-bootstrap";
+// import Jumbotron from 'react-boo'
+
 
 function App() {
   // User Login
@@ -115,8 +126,8 @@ function App() {
     localStorage.removeItem("token")
   }
 
+  // Get CME Forecast Events using DONKI
   const [donki, setDonki] = useState()
-
 
   useEffect(() => {
     Donki.getDonki().then(donkiData => {
@@ -127,17 +138,36 @@ function App() {
         setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
       }
     })
-  }, [])
+  }, []);
+
+  <Map />
 
   return (
     <BrowserRouter>
+      <div className="App p-5 mb-4 bg-dark rounded-3">
+        <Navbar>          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+
+        </Navbar>
+        <NasaPhoto />
+        <Routes>
+          <Route exact path='/' element={<Home />} user={userState} token={token} />
+          <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
+          <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
+          {/* <Route path="/" element={<Home />}></Route> */}
+          {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
+          <Route exact path='/iss' element={<Map />} user={userState} token={token} />
+        </Routes>
+
+      </div>
+
       {!userState.email ? (
-        <div>
+        <Container className="p-5 mb-4 bg-dark rounded-3">
           <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
           <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
-        </div>
+        </Container>
       ) : (
-        <div>
+        <Container className="p-5 mb-4 bg-dark rounded-3">
           <h1>Ready to go stargazing, {userState.user_name}?</h1>
           <button onClick={logMeOut}>Logout</button>
           <Link to="/">Home</Link>
@@ -163,18 +193,16 @@ function App() {
               </article>
             )}
           </div>
-        </div>
+          {/* iss return */}
+          {/* <div>
+            <h3>ISS Tracker</h3>
+            <Map />
+          </div> */}
+        </Container>
+
+
       )}
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route exact path='/' element={<Home />} user={userState} token={token} />
-          <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
-          <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/nasaphoto" element={<NasaPhoto />}></Route>
-        </Routes>
-      </div>
+
     </BrowserRouter>);
 
 }

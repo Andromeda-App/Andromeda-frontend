@@ -46,9 +46,11 @@ class Map extends React.Component{
         console.log("LAT:", this.state.center.lat)
         console.log("LNG:", this.state.center.lng)
         return(
-            <div>
+            <div className="card ">
+                <h3 className="card-title">Current ISS Location:</h3>
                 <p>Latitude: {this.state.center.lat}</p>
                 <p>Longitude: {this.state.center.lng}</p>
+                <div className="card-body">
                 <div className = "map" style={{ height: '100vh', width: '100%' }}>
                     <GoogleMapReact className = "map"
                         bootstrapURLKeys={{key: 'AIzaSyBPEAWkce7s-bwIJV7yMw_5oOt0N1kRPk0' }}
@@ -62,6 +64,7 @@ class Map extends React.Component{
                         img = {img}
                     />
                     </GoogleMapReact>
+                </div>
                 </div>
             </div>
         )

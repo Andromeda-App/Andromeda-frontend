@@ -12,10 +12,10 @@ const API = {
       }})
     },
     login:(usrData)=>{
-        return axios.post(`${URL_PREFIX}/login`,usrData)
+        return axios.post(`${URL_PREFIX}/users/login`,usrData)
     },
     signup:(usrData)=>{
-        return axios.post(`${URL_PREFIX}/signup`,usrData)
+        return axios.post(`${URL_PREFIX}/users/signup`,usrData)
     },
     getUserData:(id)=>{
         return axios.get(`${URL_PREFIX}/api/users/${id}`)

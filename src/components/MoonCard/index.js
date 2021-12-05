@@ -7,31 +7,31 @@ const baseURL = `${Config.apiEndpoint}/api/v2/bodies/positions/moon`
 
 // \ --header 'Authorization: Basic <hash>' \\
 
-export default function moonData(props) {
-    const [moon, setMoon] = useState({
-        moonrise: "",
-        peak: "",
-        moonset: "",
-        phase: ""
-    })
+class Moon extends React.Component{
+    state = {
+        moonrise: null,
+        peak: null,
+        moonset: null,
+        phase: null
+    }}
 
-    let tempURL = baseURL + props.lat
-    useEffect(() => {
-        fetchData();
+    //let tempURL = baseURL + props.lat
+    // // useEffect(() => {
+    //     fetchData();
 
-        async function fetchData() {
-            // moonURL = baseURL + "/";
-            const header =  {
-                //   "X-Requested-With": "XMLHttpRequest",
-                  Authorization: `Basic ${hash}`,
-                }
-            const observer = {
-                latitude: props.lat,
-                longitude: props.long,
-                date: moment(this.date).format("YYYY-MM-DD")
-            }
-            const res = await fetch(baseURL, {header}, {observer});
-            const data = await res.json();
+    //     function fetchData() {
+    //         // moonURL = baseURL + "/";
+    //         const header =  {
+    //             //   "X-Requested-With": "XMLHttpRequest",
+    //               Authorization: `Basic ${hash}`,
+    //             }
+    //         const observer = {
+    //             latitude: props.lat,
+    //             longitude: props.long,
+    //             date: moment(this.date).format("YYYY-MM-DD")
+    //         }
+    //         const res = await fetch(baseURL, {header}, {observer});
+    //         const data = await res.json();
             // axios
             // .post(
             //   `${Config.apiEndpoint}/api/v2/bodies/positions/moon`,
@@ -56,24 +56,26 @@ export default function moonData(props) {
   
             //   this.loading = false;
             // });
-            console.log(data);
-            setMoon(data);
-        }
-    }, []);
+//             console.log(data);
+//             setMoon(data);
+//         }
+//    // };
 
-    // Set moon image based on moon phase
+//     // Set moon image based on moon phase
 
-    return (
-        <div class="eventCard">
-            <h2>Lunar Events</h2>
-            <img src="" alt="moon phase" id="moonPhase" />
-            <div id="moonCard">
-                Moonrise:<span id="moonrise">{moon.moonrise}</span>
-                Moonset:<span id="moonset">{moon.moonset}</span>
-            </div>
-        </div>
-    )
-}
+//     return (
+//         <div class="eventCard">
+//             <h2>Lunar Events</h2>
+//             <img src="" alt="moon phase" id="moonPhase" />
+//             <div id="moonCard">
+//                 Moonrise:<span id="moonrise">{moon.moonrise}</span>
+//                 Moonset:<span id="moonset">{moon.moonset}</span>
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default Moon
 //  (function (err, obj) {
 
 // })
@@ -88,4 +90,3 @@ export default function moonData(props) {
 //         }
 //     })
 // }
-

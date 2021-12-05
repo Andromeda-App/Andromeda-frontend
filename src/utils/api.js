@@ -30,7 +30,15 @@ const API = {
     getAPOD:(data)=>{
         // Here we want to invoke the APOD api to get background image, with a default option to set as assets/background.jpg 
         return 
-    }
+    },    
+    getMoon:(userPref, token)=>{
+        // Put call to astronomy api here
+        return axios.post(`${URL_PREFIX}/api/users/preferences`,userPref,{
+            headers:{
+                "Authorization": `Bearer ${token}`
+              }
+        })
+    },
 }
 
 export default API;

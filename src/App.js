@@ -13,6 +13,7 @@ import Map from "../src/components/IssCard/Map"
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Navbar from './components/NavBar';
+import EmailForm from "./components/Email/Form";
 import API from "./utils/api.js"
 
 //Bootstrap components
@@ -132,11 +133,11 @@ function App() {
   useEffect(() => {
     Donki.getDonki().then(donkiData => {
       console.log(donkiData.data)
-      if (donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
-        setDonki("No upcoming event")
-      } else {
-        setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
-      }
+      // if (donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
+      //   setDonki("No upcoming event")
+      // } else {
+      //   setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
+      // }
     })
   }, []);
 
@@ -144,29 +145,42 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className="App p-5 mb-4 bg-dark rounded-3">
-        <Navbar>          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+
+    {/* <div className="App p-5 mb-4 bg-dark rounded-3" style={{
+      backgroundImage: `url(${<NasaPhoto/>})`,
+      backgroundPosition: 'top',
+      backgroundSize: '100% 100%',
+      backgroundRepeat: 'no-repeat'
+    }}> */}
+        <Navbar>          
+          <EmailForm/>
+          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
           <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
 
         </Navbar>
-        <NasaPhoto />
+        <EmailForm/>
         <Routes>
           <Route exact path='/' element={<Home />} user={userState} token={token} />
           <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
           {/* <Route path="/" element={<Home />}></Route> */}
-          {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
+          <Route path="/nasaphoto" element={<NasaPhoto />}></Route>
           <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
 
-      </div>
-
-      {!userState.email ? (
+      {/* </div> */}
+    {/* <div style={{
+      backgroundImage: `url(${<NasaPhoto/>})`,
+      backgroundPosition: 'top',
+      backgroundSize: '100% 100%',
+      backgroundRepeat: 'no-repeat'
+    }}> */}
+      {/* {!userState.email ? (
         <Container className="p-5 mb-4 bg-dark rounded-3">
           <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
           <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
         </Container>
-      ) : (
+      ) : ( */}
         <Container className="p-5 mb-4 bg-dark rounded-3">
           <h1>Ready to go stargazing, {userState.user_name}?</h1>
           <button onClick={logMeOut}>Logout</button>
@@ -199,9 +213,9 @@ function App() {
             <Map />
           </div> */}
         </Container>
+        {/* </div> */}
 
-
-      )}
+      {/* )} */}
       
     </BrowserRouter>);
 

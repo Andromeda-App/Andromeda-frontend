@@ -1,5 +1,9 @@
 
-
+#rootEl {
+  background-position:top;
+  background-repeat: no-repeat;
+  height:100vw;
+}
 
 .App {
   text-align: center;

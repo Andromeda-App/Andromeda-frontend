@@ -9,26 +9,23 @@ export default class EmailForm extends React.Component {
 	this.handleChange = this.handleChange.bind(this);
 	this.handleSubmit = this.handleSubmit.bind(this);
   }
- handleChange(event) {
+handleChange(event) {
     this.setState({feedback: event.target.value})
   }
 
   handleSubmit(event) {
 	const templateId = 'template_lung0vq';
 
-	this.sendFeedback(templateId, {message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email})
+	this.sendEmail(templateId, {message_html: this.state.feedback, from_name: this.state.name, reply_to: this.state.email})
   }
 
 
-  sendFeedback (templateId, variables) {
-	window.emailjs.send(
-        "service_ff42zsa", templateId,
-  	variables,"user_LyOVScD7bGjFy04qPNZ4J"
+  sendEmail (templateId, variables) {
+	window.emailjs.send("service_ff42zsa", templateId, variables,"user_LyOVScD7bGjFy04qPNZ4J"
   	).then(res => {
     	console.log('Email successfully sent!')
   	})
-  	// Handle errors here however you like, or use a React error boundary
-  	.catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured:', err))
+  	.catch(err => console.error('Unable to send email:', err))
   }
 
   render() {

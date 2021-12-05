@@ -12,7 +12,7 @@ import NasaPhoto from './components/Apod/NasaPhoto';
 import Map from "../src/components/IssCard/Map"
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
-import Navbar from './components/NavBar';
+import Navbar from 'react-bootstrap/Navbar';
 import EmailForm from "./components/Email/Form";
 import API from "./utils/api.js"
 
@@ -20,9 +20,13 @@ import API from "./utils/api.js"
 import './App.css'
 import Button from 'react-bootstrap/Button';
 import Container from "react-bootstrap/Container";
+import Nav from 'react-bootstrap/Nav';
+import { NavDropdown } from "react-bootstrap";
 //import { LinkContainer } from "react-router-bootstrap";
 // import Jumbotron from 'react-boo'
 
+// APOD
+const apodKey = process.env.REACT_APP_NASA_KEY;
 
 function App() {
   // User Login
@@ -141,47 +145,75 @@ function App() {
     })
   }, []);
 
-  <Map />
+
+  // Get background photo from NASA's APOD
+  const [photoData, setPhotoData] = useState("");
+
+  useEffect(() => {
+    fetchPhoto();
+    async function fetchPhoto() {
+      const res = await fetch(
+        `https://api.nasa.gov/planetary/apod?api_key=m6Wr9MihDDvs5EkySGkFdMXckAHmh3vUi40nganr`
+      );
+      const data = await res.json();
+      setPhotoData(data.url);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
+      <Navbar variant="dark" bg="dark" expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="#home">Andromeda</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar-dark" />
+          <Navbar.Collapse id="navbar-dark">
+            <Nav>
+              <NavDropdown
+                id="nav-dropdown-dark"
+                title="Login"
+                menuVariant="dark"
+                autoClose={false}
+              >
+                <NavDropdown.Item autoClose="false" href="#login">
+                  <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown
+                id="nav-dropdown-dark"
+                title="Sign Up"
+                menuVariant="dark"
+                autoClose={false}
+              >
+                <NavDropdown.Item href="#signup">
+                  <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+                </NavDropdown.Item>
 
-    {/* <div className="App p-5 mb-4 bg-dark rounded-3" style={{
-      backgroundImage: `url(${<NasaPhoto/>})`,
-      backgroundPosition: 'top',
-      backgroundSize: '100% 100%',
-      backgroundRepeat: 'no-repeat'
-    }}> */}
-        <Navbar>          
-          <EmailForm/>
-          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
-          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-        </Navbar>
-        <EmailForm/>
-        <Routes>
+      <div id="rootEl" style={{
+        backgroundImage: `url(${photoData})`,
+        backgroundPosition: 'top',
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat'
+      }}>
+                <Routes>
           <Route exact path='/' element={<Home />} user={userState} token={token} />
-          <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
+          {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
-          {/* <Route path="/" element={<Home />}></Route> */}
-          <Route path="/nasaphoto" element={<NasaPhoto />}></Route>
+          {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
           <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
 
-      {/* </div> */}
-    {/* <div style={{
-      backgroundImage: `url(${<NasaPhoto/>})`,
-      backgroundPosition: 'top',
-      backgroundSize: '100% 100%',
-      backgroundRepeat: 'no-repeat'
-    }}> */}
-      {/* {!userState.email ? (
-        <Container className="p-5 mb-4 bg-dark rounded-3">
-          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
-          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
-        </Container>
-      ) : ( */}
-        <Container className="p-5 mb-4 bg-dark rounded-3">
+
+      </div>
+
+      
+
+      {/* <Container className="p-5 mb-4 bg-dark rounded-3">
           <h1>Ready to go stargazing, {userState.user_name}?</h1>
           <button onClick={logMeOut}>Logout</button>
           <Link to="/">Home</Link>
@@ -191,10 +223,10 @@ function App() {
               <article>
                 <header>
                   {donki}
-                </header>
-                {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
-                {/* <p>{donki.explanation}</p> */}
-                <pre
+                </header> */}
+      {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
+      {/* <p>{donki.explanation}</p> */}
+      {/* <pre
                   style={{
                     overflowX: "auto",
                     whiteSpace: "pre-wrap",
@@ -206,17 +238,17 @@ function App() {
                 </pre>
               </article>
             )}
-          </div>
-          {/* iss return */}
-          {/* <div>
+          </div> */}
+      {/* iss return */}
+      {/* <div>
             <h3>ISS Tracker</h3>
             <Map />
           </div> */}
-        </Container>
-        {/* </div> */}
+      {/* </Container> */}
+      {/* </div> */}
 
       {/* )} */}
-      
+
     </BrowserRouter>);
 
 }

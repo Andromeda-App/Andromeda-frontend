@@ -14,6 +14,7 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import Navbar from 'react-bootstrap/Navbar';
 import EmailForm from "./components/Email/Form";
+import MoonCard from "./components/MoonCard";
 import API from "./utils/api.js"
 
 //Bootstrap components
@@ -156,7 +157,11 @@ function App() {
         `https://api.nasa.gov/planetary/apod?api_key=m6Wr9MihDDvs5EkySGkFdMXckAHmh3vUi40nganr`
       );
       const data = await res.json();
-      setPhotoData(data.url);
+      if (data.url) {
+      setPhotoData(data.url);}
+      else {
+      setPhotoData(`./assets/background.png`)
+      }
     }
   }, []);
 
@@ -164,7 +169,7 @@ function App() {
     <BrowserRouter>
       <Navbar variant="dark" bg="dark" expand="lg">
         <Container fluid>
-          <Navbar.Brand href="#home">Andromeda</Navbar.Brand>
+          <Navbar.Brand>Andromeda</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-dark" />
           <Navbar.Collapse id="navbar-dark">
             <Nav>
@@ -200,7 +205,8 @@ function App() {
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat'
       }}>
-                <Routes>
+      
+        <Routes>
           <Route exact path='/' element={<Home />} user={userState} token={token} />
           {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
@@ -208,7 +214,7 @@ function App() {
           <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
 
-
+        {/* <MoonCard /> */}
       </div>
 
       

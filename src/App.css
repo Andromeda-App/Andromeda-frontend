@@ -1,5 +1,13 @@
 
+<<<<<<< HEAD
 
+=======
+#rootEl {
+  background-position:top;
+  background-repeat: no-repeat;
+  height:100vw;
+}
+>>>>>>> dev
 
 .App {
   text-align: center;

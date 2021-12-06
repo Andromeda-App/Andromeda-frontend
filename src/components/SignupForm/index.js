@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import "./style.css"
 import API from "../../utils/api"
 import { useNavigate } from 'react-router-dom'
+import { init } from 'emailjs-com';
+init("user_LyOVScD7bGjFy04qPNZ4J");
 
 export default function SignupForm(props) {
     // User Login
@@ -42,7 +44,13 @@ export default function SignupForm(props) {
           zipCode: e.target.value
         })
       }}
-
+function sendEmail(templateId, variables) {
+      window.emailjs.send("service_ff42zsa", templateId, variables, "user_LyOVScD7bGjFy04qPNZ4J"
+      ).then(res => {
+        console.log('Email successfully sent!')
+      })
+        .catch(err => console.error('Unable to send email:', err))
+    }
     // Submit event listener
       const handleSignupSubmit = (e) => {
         e.preventDefault();
@@ -57,6 +65,8 @@ export default function SignupForm(props) {
                 });
                 props.setToken(res.data.token);
                 localStorage.setItem("token", res.data.token);
+                const templateId = 'template_lung0vq';
+                sendEmail(templateId, { message_html: "Welcome to Andromeda", from_name: this.state.name, reply_to: res.data.email })
                 navigate('/profile')
               })
               .catch((err) => {
@@ -67,7 +77,11 @@ export default function SignupForm(props) {
             console.log("Signup Failed.", err);
           });
       }
+
+  
+
     
+
     return (
         <form onChange={handleSignupChange} onSubmit={handleSignupSubmit} className="SignupForm">
             

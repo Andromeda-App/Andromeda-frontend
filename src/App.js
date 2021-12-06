@@ -16,6 +16,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import EmailForm from "./components/Email/Form";
 import MoonCard from "./components/MoonCard";
 import API from "./utils/api.js"
+import cmeData from './components/CME/cmeData';
 
 //Bootstrap components
 import './App.css'
@@ -133,12 +134,16 @@ function App() {
   }
 
   // Get CME Forecast Events using DONKI
-  const [donki, setDonki] = useState()
+  const [cme, setCme] = useState()
 
   useEffect(() => {
-    Donki.getDonki().then(donkiData => {
-      console.log(donkiData.data)
-      // if (donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
+    cmeData.getCME().then(cmeReturn => {
+      // for (let i=0; i<=cmeReturn.data.length; i++) {
+      //   if (cmeReturn.data)
+      // }
+      console.log(cmeReturn.data)
+      console.log(cmeReturn.data[0])
+      // if (donkiData.data[0].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
       //   setDonki("No upcoming event")
       // } else {
       //   setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
@@ -213,7 +218,7 @@ function App() {
           {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
           <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
-
+      {/* <cmeData /> */}
         {/* <MoonCard /> */}
       </div>
 

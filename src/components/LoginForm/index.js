@@ -16,11 +16,6 @@ export default function LoginForm(props) {
     email: "",
     password: ""
   });
-  // Signup Form
-  const [signupFormState, setSignupFormState] = useState({
-    email: "",
-    password: ""
-  });
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");

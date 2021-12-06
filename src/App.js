@@ -17,6 +17,7 @@ import EmailForm from "./components/Email/Form";
 import MoonCard from "./components/MoonCard";
 import API from "./utils/api.js"
 import cmeData from './components/CME/cmeData';
+import auroraMap from "./Aurora/auroraMap";
 
 //Bootstrap components
 import './App.css'
@@ -141,7 +142,8 @@ function App() {
       // for (let i=0; i<=cmeReturn.data.length; i++) {
       //   if (cmeReturn.data)
       // }
-      console.log(cmeReturn.data)
+
+      //console.log(cmeReturn.data)
       console.log(cmeReturn.data[0])
       // if (donkiData.data[0].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
       //   setDonki("No upcoming event")

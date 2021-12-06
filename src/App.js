@@ -40,15 +40,15 @@ function App() {
   // Token 
   const [token, setToken] = useState("")
   // Login Form
-  const [loginFormState, setLoginFormState] = useState({
-    email: "",
-    password: ""
-  });
-  // Signup Form
-  const [signupFormState, setSignupFormState] = useState({
-    email: "",
-    password: ""
-  });
+  // const [loginFormState, setLoginFormState] = useState({
+  //   email: "",
+  //   password: ""
+  // });
+  // // Signup Form
+  // const [signupFormState, setSignupFormState] = useState({
+  //   email: "",
+  //   password: ""
+  // });
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -69,64 +69,64 @@ function App() {
     }
   }, [])
 
-  const handleLoginChange = event => {
-    if (event.target.name === "email") {
-      setLoginFormState({
-        ...loginFormState,
-        email: event.target.value
-      })
-    } else {
-      setLoginFormState({
-        ...loginFormState,
-        password: event.target.value
-      })
-    }
-  }
-  const handleSignupChange = event => {
-    if (event.target.name === "email") {
-      setSignupFormState({
-        ...signupFormState,
-        email: event.target.value
-      })
-    } else {
-      setSignupFormState({
-        ...signupFormState,
-        password: event.target.value
-      })
-    }
-  }
+  // const handleLoginChange = event => {
+  //   if (event.target.name === "email") {
+  //     setLoginFormState({
+  //       ...loginFormState,
+  //       email: event.target.value
+  //     })
+  //   } else {
+  //     setLoginFormState({
+  //       ...loginFormState,
+  //       password: event.target.value
+  //     })
+  //   }
+  // }
+  // const handleSignupChange = event => {
+  //   if (event.target.name === "email") {
+  //     setSignupFormState({
+  //       ...signupFormState,
+  //       email: event.target.value
+  //     })
+  //   } else {
+  //     setSignupFormState({
+  //       ...signupFormState,
+  //       password: event.target.value
+  //     })
+  //   }
+  // }
 
-  const handleLoginSubmit = e => {
-    e.preventDefault();
-    API.login(loginFormState).then(res => {
-      console.log(res.data)
-      setUserState({
-        email: res.data.user.email,
-        id: res.data.user.id
-      })
-      setToken(res.data.token)
-      localStorage.setItem("token", res.data.token)
-    }).catch(err => {
-      console.log(err);
-    })
+  // const handleLoginSubmit = e => {
+  //   e.preventDefault();
+  //   API.login(loginFormState).then(res => {
+  //     console.log(res.data)
+  //     setUserState({
+  //       email: res.data.user.email,
+  //       id: res.data.user.id
+  //     })
+  //     setToken(res.data.token)
+  //     localStorage.setItem("token", res.data.token)
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
 
-  }
-  const handleSignupSubmit = e => {
-    e.preventDefault();
-    API.signup(signupFormState).then(res => {
-      API.login(signupFormState).then(res => {
-        console.log(res.data)
-        setUserState({
-          email: res.data.user.email,
-          id: res.data.user.id
-        })
-        setToken(res.data.token)
-        localStorage.setItem("token", res.data.token)
-      }).catch(err => {
-        console.log(err);
-      })
-    })
-  }
+  // }
+  // const handleSignupSubmit = e => {
+  //   e.preventDefault();
+  //   API.signup(signupFormState).then(res => {
+  //     API.login(signupFormState).then(res => {
+  //       console.log(res.data)
+  //       setUserState({
+  //         email: res.data.user.email,
+  //         id: res.data.user.id
+  //       })
+  //       setToken(res.data.token)
+  //       localStorage.setItem("token", res.data.token)
+  //     }).catch(err => {
+  //       console.log(err);
+  //     })
+  //   })
+  // }
 
   const logMeOut = () => {
     setUserState({ email: '', id: 0 })
@@ -187,7 +187,8 @@ function App() {
                 autoClose={false}
               >
                 <NavDropdown.Item autoClose="false" href="#login">
-                  <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+                  <LoginForm/>
+                  {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown
@@ -197,7 +198,9 @@ function App() {
                 autoClose={false}
               >
                 <NavDropdown.Item href="#signup">
-                  <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+                  <SignupForm setUserState={setUserState}
+                setToken={setToken}/>
+                  {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
                 </NavDropdown.Item>
 
               </NavDropdown>

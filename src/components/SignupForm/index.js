@@ -44,7 +44,7 @@ export default function SignupForm(props) {
           zipCode: e.target.value
         })
       }}
-function sendEmail(templateId, variables) {
+      function sendEmail(templateId, variables) {
       window.emailjs.send("service_ff42zsa", templateId, variables, "user_LyOVScD7bGjFy04qPNZ4J"
       ).then(res => {
         console.log('Email successfully sent!')
@@ -66,7 +66,7 @@ function sendEmail(templateId, variables) {
                 props.setToken(res.data.token);
                 localStorage.setItem("token", res.data.token);
                 const templateId = 'template_lung0vq';
-                sendEmail(templateId, { message_html: "Welcome to Andromeda", from_name: this.state.name, reply_to: res.data.email })
+                sendEmail(templateId, { message_html: "Welcome to Andromeda", from_name:"Andromeda", reply_to: res.data.email })
                 navigate('/profile')
               })
               .catch((err) => {

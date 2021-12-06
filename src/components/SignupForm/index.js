@@ -45,12 +45,13 @@ export default function SignupForm(props) {
         })
       }}
       function sendEmail(templateId, variables) {
-      window.emailjs.send("service_ff42zsa", templateId, variables, "user_LyOVScD7bGjFy04qPNZ4J"
+        emailjs.send("service_ff42zsa", templateId, variables, "user_LyOVScD7bGjFy04qPNZ4J"
       ).then(res => {
         console.log('Email successfully sent!')
       })
         .catch(err => console.error('Unable to send email:', err))
     }
+    
     // Submit event listener
       const handleSignupSubmit = (e) => {
         e.preventDefault();

@@ -66,6 +66,7 @@ export default function LoginForm(props) {
 
   }
 
+<<<<<<< HEAD
   return (
     <form onSubmit={handleLoginSubmit} onChange={handleLoginChange} className="LoginForm" id="loginForm">
       <h3>Login Form</h3>
@@ -74,4 +75,14 @@ export default function LoginForm(props) {
       <button className="btn btn-light">Submit</button>
     </form>
   )
+=======
+    return (
+        <form onSubmit={handleLoginSubmit} onChange={handleLoginChange} className="LoginForm" id="loginForm">
+            <h3>Login Form</h3>
+            <input  id="loginEmail" className="form-control" onChange={handleLoginChange} name="email" value = {loginFormState.email} placeholder="email"/>
+            <input  id="loginPassword" className="form-control" onChange={handleLoginChange} name="password" value = {loginFormState.password} type = "password"/>
+            <button className="btn btn-light">Submit</button>
+        </form>
+    )
+>>>>>>> dev
 }

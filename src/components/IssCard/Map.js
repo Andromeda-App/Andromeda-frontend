@@ -5,15 +5,18 @@
 import GoogleMapReact from 'google-map-react'
 import React from "react";
 import ISS_IMG from "../../assets/Images/64px-International_Space_Station_(Expedition_58_Patch).svg.png";
+import Card from 'react-bootstrap/Card';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
+
 // import { useSearchParams } from 'react-router-dom'
 // import iss from '../../assets/Images/International_Space_Station_white.svg.png'
 
 const ISS_URL = "http://api.open-notify.org/iss-now.json"
 const MAP_KEY = process.env.REACT_APP_MAP_KEY
-const img = <img src = {ISS_IMG} alt = "iss" height = "30px"/>
+const img = <img src={ISS_IMG} alt="iss" height="30px" />
 const SpaceStation = () => <div className="findme">{img}</div>
 
-class Map extends React.Component{
+class Map extends React.Component {
     state = {
         center: {
             lat: 0,
@@ -22,12 +25,12 @@ class Map extends React.Component{
         zoom: 1
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getCoordinates()
         this.interval = setInterval(this.getCoordinates, 3000)
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         clearInterval(this.interval)
     }
 
@@ -42,31 +45,33 @@ class Map extends React.Component{
             }))
     }
 
-    render(){
+    render() {
         console.log("LAT:", this.state.center.lat)
         console.log("LNG:", this.state.center.lng)
-        return(
-            <div className="card ">
-                <h3 className="card-title">Current ISS Location:</h3>
-                <p>Latitude: {this.state.center.lat}</p>
-                <p>Longitude: {this.state.center.lng}</p>
+        return (
+            <Card bg="dark" variant="dark">
+                <Card.Title >ISS Tracker</Card.Title>
                 <div className="card-body">
-                <div className = "map" style={{ height: '100vh', width: '100%' }}>
-                    <GoogleMapReact className = "map"
-                        bootstrapURLKeys={{key: 'AIzaSyBPEAWkce7s-bwIJV7yMw_5oOt0N1kRPk0' }}
-                        center={this.state.center}
-                        zoom={this.state.zoom}
-                    >
-                    <SpaceStation
+                    <div className="map" style={{ height: '100vh', width: '100%' }}>
+                        <GoogleMapReact className="map"
+                            bootstrapURLKeys={{ key: 'AIzaSyBPEAWkce7s-bwIJV7yMw_5oOt0N1kRPk0' }}
+                            center={this.state.center}
+                            zoom={this.state.zoom}
+                        >
+                            <SpaceStation
 
-                        lat = {this.state.center.lat}
-                        lng = {this.state.center.lng}
-                        img = {img}
-                    />
-                    </GoogleMapReact>
+                                lat={this.state.center.lat}
+                                lng={this.state.center.lng}
+                                img={img}
+                            />
+                        </GoogleMapReact>
+                    </div>
                 </div>
-                </div>
-            </div>
+                <Card.Text>
+                    Latitude: {this.state.center.lat}
+                    Longitude: {this.state.center.lng}
+                </Card.Text>
+            </Card>
         )
     }
 }

@@ -4,7 +4,11 @@ import API from "../../utils/api"
 
 
 export default function LoginForm(props) {
+<<<<<<< HEAD
   // User Login
+=======
+    // User Login Form
+>>>>>>> dev
   const [userState, setUserState] = useState({
     email: "",
     id: 0

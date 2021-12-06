@@ -55,16 +55,23 @@ export default function SignupForm(props) {
         props.setErrorMsg("");
         API.login(signupState)
           .then((res) => {
-            props.setUserState({
-              email: res.data.user.email,
-              id: res.data.user.id,
-            });
-            props.setToken(res.data.token);
-            localStorage.setItem("token", res.data.token);
-            navigate('/profile')
+            // props.setErrorMsg("");
+            API.login(signupState)
+              .then((res) => {
+                props.setUserState({
+                  email: res.data.user.email,
+                  id: res.data.user.id,
+                });
+                props.setToken(res.data.token);
+                localStorage.setItem("token", res.data.token);
+                navigate('/profile')
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           })
           .catch((err) => {
-            console.log(err);
+            console.log("Signup Failed.", err);
           });
       })
       .catch((err) => {

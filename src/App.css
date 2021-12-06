@@ -1,13 +1,8 @@
-
-<<<<<<< HEAD
-
-=======
 #rootEl {
-  background-position:top;
+  background-position: top;
   background-repeat: no-repeat;
-  height:100vw;
+  height: 100vw;
 }
->>>>>>> dev
 
 .App {
   text-align: center;
@@ -40,13 +35,13 @@
 }
 
 /* kp */
-.Iss-card-container{
+.Iss-card-container {
   height: 100vh;
   width: 100vw;
 }
 
 .iss-icon {
-  width:40px;
+  width: 40px;
   height: auto;
 }
 /* kp */

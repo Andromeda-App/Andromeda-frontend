@@ -12,13 +12,9 @@ import NasaPhoto from './components/Apod/NasaPhoto';
 import Map from "../src/components/IssCard/Map"
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
-<<<<<<< HEAD
-import Navbar from './components/NavBar';
-=======
 import Navbar from 'react-bootstrap/Navbar';
 import EmailForm from "./components/Email/Form";
 import MoonCard from "./components/MoonCard";
->>>>>>> dev
 import API from "./utils/api.js"
 import cmeData from './components/CME/cmeData';
 import auroraMap from "./Aurora/auroraMap";
@@ -27,11 +23,6 @@ import auroraMap from "./Aurora/auroraMap";
 import './App.css'
 import Button from 'react-bootstrap/Button';
 import Container from "react-bootstrap/Container";
-<<<<<<< HEAD
-//import { LinkContainer } from "react-router-bootstrap";
-// import Jumbotron from 'react-boo'
-
-=======
 import Nav from 'react-bootstrap/Nav';
 import { NavDropdown } from "react-bootstrap";
 //import { LinkContainer } from "react-router-bootstrap";
@@ -39,7 +30,6 @@ import { NavDropdown } from "react-bootstrap";
 
 // APOD
 const apodKey = process.env.REACT_APP_NASA_KEY;
->>>>>>> dev
 
 function App() {
   // User Login
@@ -50,17 +40,6 @@ function App() {
   // Token 
   const [token, setToken] = useState("")
   // Login Form
-<<<<<<< HEAD
-  const [loginFormState, setLoginFormState] = useState({
-    email: "",
-    password: ""
-  });
-  // Signup Form
-  const [signupFormState, setSignupFormState] = useState({
-    email: "",
-    password: ""
-  })
-=======
   // const [loginFormState, setLoginFormState] = useState({
   //   email: "",
   //   password: ""
@@ -70,7 +49,6 @@ function App() {
   //   email: "",
   //   password: ""
   // });
->>>>>>> dev
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -175,23 +153,6 @@ function App() {
     })
   }, []);
 
-<<<<<<< HEAD
-  <Map />
-
-  return (
-    <BrowserRouter>
-      <div className="App p-5 mb-4 bg-dark rounded-3">
-        <Navbar>          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
-          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
-
-        </Navbar>
-        <NasaPhoto />
-        <Routes>
-          <Route exact path='/' element={<Home />} user={userState} token={token} />
-          <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} />
-          <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
-          {/* <Route path="/" element={<Home />}></Route> */}
-=======
 
   // Get background photo from NASA's APOD
   const [photoData, setPhotoData] = useState("");
@@ -204,9 +165,10 @@ function App() {
       );
       const data = await res.json();
       if (data.url) {
-      setPhotoData(data.url);}
+        setPhotoData(data.url);
+      }
       else {
-      setPhotoData(`./assets/background.png`)
+        setPhotoData(`./assets/background.png`)
       }
     }
   }, []);
@@ -226,7 +188,7 @@ function App() {
                 autoClose={false}
               >
                 <NavDropdown.Item autoClose="false" href="#login">
-                  <LoginForm/>
+                  <LoginForm />
                   {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
                 </NavDropdown.Item>
               </NavDropdown>
@@ -238,7 +200,7 @@ function App() {
               >
                 <NavDropdown.Item href="#signup">
                   <SignupForm setUserState={setUserState}
-                setToken={setToken}/>
+                    setToken={setToken} />
                   {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
                 </NavDropdown.Item>
 
@@ -254,38 +216,21 @@ function App() {
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat'
       }}>
-      
+
         <Routes>
           <Route exact path='/' element={<Home />} user={userState} token={token} />
           {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
           <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
->>>>>>> dev
           {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
           <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-      </div>
-
-      {!userState.email ? (
-        <Container className="p-5 mb-4 bg-dark rounded-3">
-          <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
-          <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
-        </Container>
-      ) : (
-        <Container className="p-5 mb-4 bg-dark rounded-3">
-=======
-=======
-      {/* <cmeData /> */}
->>>>>>> dev
+        {/* <cmeData /> */}
         {/* <MoonCard /> */}
       </div>
 
-      
+
 
       {/* <Container className="p-5 mb-4 bg-dark rounded-3">
->>>>>>> dev
           <h1>Ready to go stargazing, {userState.user_name}?</h1>
           <button onClick={logMeOut}>Logout</button>
           <Link to="/">Home</Link>
@@ -316,17 +261,10 @@ function App() {
             <h3>ISS Tracker</h3>
             <Map />
           </div> */}
-<<<<<<< HEAD
-        </Container>
-
-
-      )}
-=======
       {/* </Container> */}
       {/* </div> */}
 
       {/* )} */}
->>>>>>> dev
 
     </BrowserRouter>);
 

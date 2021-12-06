@@ -8,6 +8,7 @@ import Map from '../../components/IssCard/Map';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
+import magView from '../../components/swpcAlert.js/geospace';
 
 
 function Profile(props) {
@@ -66,7 +67,27 @@ function Profile(props) {
                             </Card>
                         </Col>
                         <Col>
-                            <Map/>
+                            <Map />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <Card bg="dark" variant="dark">
+                                <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/geospace/velocity/latest.png" />
+                                <Card.Title>Magnetosphere</Card.Title>
+                                <Card.Text>
+                                    Current state of the earth's magnetosphere.
+                                </Card.Text>
+                            </Card>
+                        </Col>
+                        <Col>
+                        <Card bg="dark" variant="dark">
+                                <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg" />
+                                <Card.Title>Coronal Mass Ejections</Card.Title>
+                                <Card.Text>
+                                    Check for Coronal Mass Ejections in this live-view of the Sun's Corona!
+                                </Card.Text>
+                            </Card>
                         </Col>
                     </Row>
                 </Container>

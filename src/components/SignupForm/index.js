@@ -48,7 +48,7 @@ export default function SignupForm(props) {
         e.preventDefault();
         API.signup(signupState)
           .then((res) => {
-            props.setErrorMsg("");
+            // props.setErrorMsg("");
             API.login(signupState)
               .then((res) => {
                 props.setUserState({
@@ -64,7 +64,7 @@ export default function SignupForm(props) {
               });
           })
           .catch((err) => {
-            props.setErrorMsg("Signup Failed.");
+            console.log("Signup Failed.", err);
           });
       }
     

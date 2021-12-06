@@ -66,7 +66,7 @@ function sendEmail(templateId, variables) {
                 props.setToken(res.data.token);
                 localStorage.setItem("token", res.data.token);
                 const templateId = 'template_lung0vq';
-                sendEmail(templateId, { message_html: "Welcome to Andromeda", from_name: this.state.name, reply_to: res.data.email })
+                sendEmail(templateId, { message_html: "Welcome to Andromeda", from_name: "Andromeda Space Weather App", reply_to: "andromedaReactApp@gmail.com" })
                 navigate('/profile')
               })
               .catch((err) => {

@@ -20,6 +20,8 @@ import EmailForm from "./components/Email/Form";
 import MoonCard from "./components/MoonCard";
 >>>>>>> dev
 import API from "./utils/api.js"
+import cmeData from './components/CME/cmeData';
+import auroraMap from "./Aurora/auroraMap";
 
 //Bootstrap components
 import './App.css'
@@ -48,6 +50,7 @@ function App() {
   // Token 
   const [token, setToken] = useState("")
   // Login Form
+<<<<<<< HEAD
   const [loginFormState, setLoginFormState] = useState({
     email: "",
     password: ""
@@ -57,6 +60,17 @@ function App() {
     email: "",
     password: ""
   })
+=======
+  // const [loginFormState, setLoginFormState] = useState({
+  //   email: "",
+  //   password: ""
+  // });
+  // // Signup Form
+  // const [signupFormState, setSignupFormState] = useState({
+  //   email: "",
+  //   password: ""
+  // });
+>>>>>>> dev
 
   useEffect(() => {
     const myToken = localStorage.getItem("token");
@@ -77,64 +91,64 @@ function App() {
     }
   }, [])
 
-  const handleLoginChange = event => {
-    if (event.target.name === "email") {
-      setLoginFormState({
-        ...loginFormState,
-        email: event.target.value
-      })
-    } else {
-      setLoginFormState({
-        ...loginFormState,
-        password: event.target.value
-      })
-    }
-  }
-  const handleSignupChange = event => {
-    if (event.target.name === "email") {
-      setSignupFormState({
-        ...signupFormState,
-        email: event.target.value
-      })
-    } else {
-      setSignupFormState({
-        ...signupFormState,
-        password: event.target.value
-      })
-    }
-  }
+  // const handleLoginChange = event => {
+  //   if (event.target.name === "email") {
+  //     setLoginFormState({
+  //       ...loginFormState,
+  //       email: event.target.value
+  //     })
+  //   } else {
+  //     setLoginFormState({
+  //       ...loginFormState,
+  //       password: event.target.value
+  //     })
+  //   }
+  // }
+  // const handleSignupChange = event => {
+  //   if (event.target.name === "email") {
+  //     setSignupFormState({
+  //       ...signupFormState,
+  //       email: event.target.value
+  //     })
+  //   } else {
+  //     setSignupFormState({
+  //       ...signupFormState,
+  //       password: event.target.value
+  //     })
+  //   }
+  // }
 
-  const handleLoginSubmit = e => {
-    e.preventDefault();
-    API.login(loginFormState).then(res => {
-      console.log(res.data)
-      setUserState({
-        email: res.data.user.email,
-        id: res.data.user.id
-      })
-      setToken(res.data.token)
-      localStorage.setItem("token", res.data.token)
-    }).catch(err => {
-      console.log(err);
-    })
+  // const handleLoginSubmit = e => {
+  //   e.preventDefault();
+  //   API.login(loginFormState).then(res => {
+  //     console.log(res.data)
+  //     setUserState({
+  //       email: res.data.user.email,
+  //       id: res.data.user.id
+  //     })
+  //     setToken(res.data.token)
+  //     localStorage.setItem("token", res.data.token)
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
 
-  }
-  const handleSignupSubmit = e => {
-    e.preventDefault();
-    API.signup(signupFormState).then(res => {
-      API.login(signupFormState).then(res => {
-        console.log(res.data)
-        setUserState({
-          email: res.data.user.email,
-          id: res.data.user.id
-        })
-        setToken(res.data.token)
-        localStorage.setItem("token", res.data.token)
-      }).catch(err => {
-        console.log(err);
-      })
-    })
-  }
+  // }
+  // const handleSignupSubmit = e => {
+  //   e.preventDefault();
+  //   API.signup(signupFormState).then(res => {
+  //     API.login(signupFormState).then(res => {
+  //       console.log(res.data)
+  //       setUserState({
+  //         email: res.data.user.email,
+  //         id: res.data.user.id
+  //       })
+  //       setToken(res.data.token)
+  //       localStorage.setItem("token", res.data.token)
+  //     }).catch(err => {
+  //       console.log(err);
+  //     })
+  //   })
+  // }
 
   const logMeOut = () => {
     setUserState({ email: '', id: 0 })
@@ -143,12 +157,17 @@ function App() {
   }
 
   // Get CME Forecast Events using DONKI
-  const [donki, setDonki] = useState()
+  const [cme, setCme] = useState()
 
   useEffect(() => {
-    Donki.getDonki().then(donkiData => {
-      console.log(donkiData.data)
-      // if (donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
+    cmeData.getCME().then(cmeReturn => {
+      // for (let i=0; i<=cmeReturn.data.length; i++) {
+      //   if (cmeReturn.data)
+      // }
+
+      //console.log(cmeReturn.data)
+      console.log(cmeReturn.data[0])
+      // if (donkiData.data[0].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
       //   setDonki("No upcoming event")
       // } else {
       //   setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
@@ -207,7 +226,8 @@ function App() {
                 autoClose={false}
               >
                 <NavDropdown.Item autoClose="false" href="#login">
-                  <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+                  <LoginForm/>
+                  {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown
@@ -217,7 +237,9 @@ function App() {
                 autoClose={false}
               >
                 <NavDropdown.Item href="#signup">
-                  <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+                  <SignupForm setUserState={setUserState}
+                setToken={setToken}/>
+                  {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
                 </NavDropdown.Item>
 
               </NavDropdown>
@@ -241,6 +263,7 @@ function App() {
           {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
           <Route exact path='/iss' element={<Map />} user={userState} token={token} />
         </Routes>
+<<<<<<< HEAD
 
 <<<<<<< HEAD
       </div>
@@ -253,6 +276,9 @@ function App() {
       ) : (
         <Container className="p-5 mb-4 bg-dark rounded-3">
 =======
+=======
+      {/* <cmeData /> */}
+>>>>>>> dev
         {/* <MoonCard /> */}
       </div>
 

@@ -7,3 +7,6 @@
 #meteorImage {
     background-image:url("../../assets/meteor.jpg");
 }
+.content {
+    color:azure;
+}

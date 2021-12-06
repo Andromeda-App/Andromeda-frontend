@@ -186,7 +186,7 @@ function App() {
                 menuVariant="dark"
                 autoClose={false}
               >
-                <NavDropdown.Item autoClose="false" href="#login">
+                <NavDropdown.Item autoclose="false" href="#login">
                   <LoginForm/>
                   {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
                 </NavDropdown.Item>

@@ -52,10 +52,8 @@ export default function SignupForm(props) {
             API.login(signupState)
               .then((res) => {
                 props.setUserState({
-                  user_name: res.data.user.user_name,
                   email: res.data.user.email,
                   id: res.data.user.id,
-                  zipCode: res.data.user.zipCode
                 });
                 props.setToken(res.data.token);
                 localStorage.setItem("token", res.data.token);
@@ -71,7 +69,7 @@ export default function SignupForm(props) {
       }
     
     return (
-        <form onChange={handleSignupChange} signupState={signupState} onSubmit={signupState.submit} className="SignupForm">
+        <form onChange={handleSignupChange} onSubmit={handleSignupSubmit} className="SignupForm">
             
             <input id="usernameSignup" className="form-control p3" onChange={handleSignupChange} name="user_name" value = {signupState.user_name} placeholder="username"/>
             <input id="emailSignup" className="form-control p3" onChange={handleSignupChange} name="email" value = {signupState.email} placeholder="email"/>

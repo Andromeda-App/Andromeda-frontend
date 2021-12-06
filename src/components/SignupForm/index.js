@@ -4,13 +4,21 @@ import API from "../../utils/api"
 import { useNavigate } from 'react-router-dom'
 
 export default function SignupForm(props) {
+    // User Login
+    const [userState, setUserState] = useState({
+      email: "",
+      id: 0
+    });
+    // Token 
+    const [token, setToken] = useState("")
+
     const navigate = useNavigate();
     // Signup Form State
     const [signupState, setsignupState] = useState({
         email: "",
         password: "",
-        username: "",
-        zipcode: "",
+        user_name: "",
+        zipCode: "",
       });
 
       // State Change Event Listener
@@ -50,7 +58,7 @@ export default function SignupForm(props) {
       }
     
     return (
-        <form onSubmit={props.submit} className="SignupForm">
+        <form submit={handleSignupSubmit} change={handleSignupChange} signupState={signupState} onSubmit={props.submit} className="SignupForm">
             
             <input id="usernameSignup" className="form-control p3" onChange={props.change} name="userName" value = {props.signupState.user_name} placeholder="username"/>
             <input id="emailSignup" className="form-control p3" onChange={props.change} name="email" value = {props.signupState.email} placeholder="email"/>

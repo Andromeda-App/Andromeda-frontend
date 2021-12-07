@@ -1,17 +1,24 @@
 /* Profile Page Style Sheet */
 
 .eventCard {
-    /* background-color: aqua; */
+  /* background-color: aqua; */
 }
 
 #meteorImage {
-    background-image:url("../../assets/meteor.jpg");
+  background-image: url("../../assets/meteor.jpg");
 }
 .content {
-    color:azure;
+  color: azure;
 }
 
 .Card {
-    color:aquamarine;
+  color: aquamarine;
+}
 
+.card-class {
+  height: 75vh;
+  width: 90%;
+  margin-top: 50%;
+  /* padding: 1%; */
+  /* padding: none; */
 }

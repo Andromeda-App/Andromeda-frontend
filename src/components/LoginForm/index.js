@@ -4,7 +4,7 @@ import API from "../../utils/api"
 
 
 export default function LoginForm(props) {
-    // User Login Form
+  // User Login
   const [userState, setUserState] = useState({
     email: "",
     id: 0
@@ -50,28 +50,28 @@ export default function LoginForm(props) {
     }
   }
 
-    const handleLoginSubmit = e => {
-        e.preventDefault();
-        API.login(loginFormState).then(res => {
-          console.log(res.data)
-          setUserState({
-            email: res.data.user.email,
-            id: res.data.user.id
-          })
-          setToken(res.data.token)
-          localStorage.setItem("token", res.data.token)
-        }).catch(err => {
-          console.log(err);
-        })
-    
-      }
+  const handleLoginSubmit = e => {
+    e.preventDefault();
+    API.login(loginFormState).then(res => {
+      console.log(res.data)
+      setUserState({
+        email: res.data.user.email,
+        id: res.data.user.id
+      })
+      setToken(res.data.token)
+      localStorage.setItem("token", res.data.token)
+    }).catch(err => {
+      console.log(err);
+    })
 
-    return (
-        <form onSubmit={handleLoginSubmit} onChange={handleLoginChange} className="LoginForm" id="loginForm">
-            <h3>Login Form</h3>
-            <input  id="loginEmail" className="form-control" onChange={handleLoginChange} name="email" value = {loginFormState.email} placeholder="email"/>
-            <input  id="loginPassword" className="form-control" onChange={handleLoginChange} name="password" value = {loginFormState.password} type = "password"/>
-            <button className="btn btn-light">Submit</button>
-        </form>
-    )
+  }
+
+  return (
+    <form onSubmit={handleLoginSubmit} onChange={handleLoginChange} className="LoginForm" id="loginForm">
+      <h3>Login Form</h3>
+      <input id="loginEmail" className="form-control" onChange={handleLoginChange} name="email" value={loginFormState.email} placeholder="Email" />
+      <input id="loginPassword" className="form-control" onChange={handleLoginChange} name="password" value={loginFormState.password} type="password" placeholder="Password" />
+      <button className="btn btn-light" style={{ background: 'purple', color: 'white' }}>Submit</button>
+    </form>
+  )
 }

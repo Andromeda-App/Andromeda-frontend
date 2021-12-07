@@ -56,7 +56,7 @@ function Profile(props) {
                 {/* <h1>Get ready for some top-tier stargazing, {user.name}!</h1>
             {/* )} */}
                 <Container fluid className="justify-content-md-center content">
-                    <Row>
+                    <Row style={{ height: '100vw'}}>
                         <Col>
                             <Card className="card-class" bg="dark" variant="dark">
                                 <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg" />
@@ -67,10 +67,15 @@ function Profile(props) {
                             </Card>
                         </Col>
                         <Col>
-                            <Map />
+                            <Map style={{ height: '100%'}}/>
                         </Col>
+<<<<<<< HEAD
                         <Col>
                             <Card className="card-class" bg="dark" variant="dark">
+=======
+                         <Col>
+                        <Card bg="dark" variant="dark">
+>>>>>>> dev
                                 <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg" />
                                 <Card.Title> Coronal Mass Ejections</Card.Title>
                                 <Card.Text>

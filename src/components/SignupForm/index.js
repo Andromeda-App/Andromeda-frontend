@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./style.css"
 import API from "../../utils/api"
 import { useNavigate } from 'react-router-dom'
+import { init } from 'emailjs-com';
+init("user_LyOVScD7bGjFy04qPNZ4J");
 
 export default function SignupForm(props) {
   // User Login
@@ -46,38 +48,43 @@ export default function SignupForm(props) {
       })
     }
   }
-
+  // function sendEmail(templateId, variables) {
+  //   window.emailjs.send("service_ff42zsa", templateId, variables, "user_LyOVScD7bGjFy04qPNZ4J"
+  //   ).then(res => {
+  //     console.log('Email successfully sent!')
+  //   })
+  //     .catch(err => console.error('Unable to send email:', err))
+  // }
   // Submit event listener
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     API.signup(signupState)
       .then((res) => {
-        props.setErrorMsg("");
+        // props.setErrorMsg("");
         API.login(signupState)
           .then((res) => {
-            // props.setErrorMsg("");
-            API.login(signupState)
-              .then((res) => {
-                props.setUserState({
-                  email: res.data.user.email,
-                  id: res.data.user.id,
-                });
-                props.setToken(res.data.token);
-                localStorage.setItem("token", res.data.token);
-                navigate('/profile')
-              })
-              .catch((err) => {
-                console.log(err);
-              });
+            props.setUserState({
+              email: res.data.user.email,
+              id: res.data.user.id,
+            });
+            props.setToken(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            // const templateId = 'template_lung0vq';
+            // sendEmail(templateId, { message_html: "Welcome to Andromeda", from_name: "Andromeda Space Weather App", reply_to: "andromedaReactApp@gmail.com" })
+            navigate('/profile')
           })
           .catch((err) => {
-            console.log("Signup Failed.", err);
+            console.log(err);
           });
       })
       .catch((err) => {
-        props.setErrorMsg("Signup Failed.");
+        console.log("Signup Failed.", err);
       });
   }
+
+
+
+
 
   return (
     <form onChange={handleSignupChange} onSubmit={handleSignupSubmit} className="SignupForm">

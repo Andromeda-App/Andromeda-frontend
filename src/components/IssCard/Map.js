@@ -49,10 +49,9 @@ class Map extends React.Component {
         console.log("LAT:", this.state.center.lat)
         console.log("LNG:", this.state.center.lng)
         return (
-            <Card bg="dark" variant="dark">
-                <Card.Title >ISS Tracker</Card.Title>
+            <Card bg="dark" variant="dark" className="card-class">
                 <div className="card-body">
-                    <div className="map" style={{ height: '100vh', width: '100%' }}>
+                    <div className="map" style={{ height: '60vh', width: '100%' }}>
                         <GoogleMapReact className="map"
                             bootstrapURLKeys={{ key: 'AIzaSyBPEAWkce7s-bwIJV7yMw_5oOt0N1kRPk0' }}
                             center={this.state.center}
@@ -67,6 +66,7 @@ class Map extends React.Component {
                         </GoogleMapReact>
                     </div>
                 </div>
+                <Card.Title >ISS Tracker</Card.Title>
                 <Card.Text>
                     Latitude: {this.state.center.lat}
                     Longitude: {this.state.center.lng}

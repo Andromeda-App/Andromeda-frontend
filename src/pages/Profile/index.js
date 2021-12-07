@@ -58,7 +58,7 @@ function Profile(props) {
                 <Container fluid className="justify-content-md-center content">
                     <Row style={{ height: '100vw'}}>
                         <Col>
-                            <Card bg="dark" variant="dark">
+                            <Card className="card-class" bg="dark" variant="dark">
                                 <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg" />
                                 <Card.Title>Aurora Forecast Map</Card.Title>
                                 <Card.Text>
@@ -69,10 +69,15 @@ function Profile(props) {
                         <Col>
                             <Map style={{ height: '100%'}}/>
                         </Col>
+<<<<<<< HEAD
+                        <Col>
+                            <Card className="card-class" bg="dark" variant="dark">
+=======
                          <Col>
                         <Card bg="dark" variant="dark">
+>>>>>>> dev
                                 <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg" />
-                                <Card.Title>Coronal Mass Ejections</Card.Title>
+                                <Card.Title> Coronal Mass Ejections</Card.Title>
                                 <Card.Text>
                                     Check for Coronal Mass Ejections in this live-view of the Sun's Corona!
                                 </Card.Text>
@@ -81,7 +86,7 @@ function Profile(props) {
                     </Row>
                     <Row>
                         <Col>
-                            <Card bg="dark" variant="dark">
+                            <Card className="card-class" bg="dark" variant="dark">
                                 <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/geospace/velocity/latest.png" />
                                 <Card.Title>Magnetosphere</Card.Title>
                                 <Card.Text>

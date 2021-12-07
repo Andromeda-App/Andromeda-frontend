@@ -21,13 +21,13 @@ class auroraMap extends React.Component {
 
     render() {
         return (
-                <Card>
-                    <h2>Aurora Forecast Map</h2>
-                    <div id="auroraMap" style={{
-                        backgroundImage: `url(${northURL})`,
-                        backgroundRepeat: 'no-repeat'
-                    }}></div>
-                </Card>
+            <Card className="card-class" >
+                <h2>Aurora Forecast Map</h2>
+                <div id="auroraMap" style={{
+                    backgroundImage: `url(${northURL})`,
+                    backgroundRepeat: 'no-repeat'
+                }}></div>
+            </Card>
 
         )
     }

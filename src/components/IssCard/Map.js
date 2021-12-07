@@ -1,15 +1,8 @@
-// import React, { useState } from "react";
-// import { useParams } from "react-router-dom"
-// import API from "../../utils/API";
-
 import GoogleMapReact from 'google-map-react'
 import React from "react";
 import ISS_IMG from "../../assets/Images/64px-International_Space_Station_(Expedition_58_Patch).svg.png";
 import Card from 'react-bootstrap/Card';
 import CardHeader from 'react-bootstrap/esm/CardHeader';
-
-// import { useSearchParams } from 'react-router-dom'
-// import iss from '../../assets/Images/International_Space_Station_white.svg.png'
 
 const ISS_URL = "http://api.open-notify.org/iss-now.json"
 const MAP_KEY = process.env.REACT_APP_MAP_KEY
@@ -46,31 +39,29 @@ class Map extends React.Component {
     }
 
     render() {
-        console.log("LAT:", this.state.center.lat)
-        console.log("LNG:", this.state.center.lng)
         return (
-            <Card bg="dark" variant="dark">
-                <Card.Title >ISS Tracker</Card.Title>
-                <div className="card-body">
-                    <div className="map" style={{ height: '100vh', width: '100%' }}>
+            <Card bg="dark" variant="dark" className="card-class">
+                <Card.Body className="card-body">
+                    <div className="map" style={{ height: '80%', width: '100%' }}>
                         <GoogleMapReact className="map"
                             bootstrapURLKeys={{ key: 'AIzaSyBPEAWkce7s-bwIJV7yMw_5oOt0N1kRPk0' }}
                             center={this.state.center}
                             zoom={this.state.zoom}
                         >
                             <SpaceStation
-
                                 lat={this.state.center.lat}
                                 lng={this.state.center.lng}
                                 img={img}
                             />
                         </GoogleMapReact>
                     </div>
-                </div>
+                
+                <Card.Title >ISS Tracker</Card.Title>
                 <Card.Text>
                     Latitude: {this.state.center.lat}
                     Longitude: {this.state.center.lng}
                 </Card.Text>
+                </Card.Body>
             </Card>
         )
     }

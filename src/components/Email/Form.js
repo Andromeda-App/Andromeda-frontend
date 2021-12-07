@@ -31,7 +31,7 @@ export default class EmailForm extends React.Component {
 	render() {
 		return (
 			<form className="test-mailing">
-				<h1>Let's see if it works</h1>
+				<h1>Test-Mailing</h1>
 				<div>
 					<textarea
 						id="test-mailing"

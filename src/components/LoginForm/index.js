@@ -69,9 +69,9 @@ export default function LoginForm(props) {
   return (
     <form onSubmit={handleLoginSubmit} onChange={handleLoginChange} className="LoginForm" id="loginForm">
       <h3>Login Form</h3>
-      <input id="loginEmail" className="form-control" onChange={handleLoginChange} name="email" value={loginFormState.email} placeholder="email" />
-      <input id="loginPassword" className="form-control" onChange={handleLoginChange} name="password" value={loginFormState.password} type="password" />
-      <button className="btn btn-light">Submit</button>
+      <input id="loginEmail" className="form-control" onChange={handleLoginChange} name="email" value={loginFormState.email} placeholder="Email" />
+      <input id="loginPassword" className="form-control" onChange={handleLoginChange} name="password" value={loginFormState.password} type="password" placeholder="Password" />
+      <button className="btn btn-light" style={{ background: 'purple', color: 'white' }}>Submit</button>
     </form>
   )
 }

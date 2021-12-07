@@ -2,51 +2,6 @@ import '../../App.css';
 import { Link } from "react-router-dom"
 import SignupForm from '../SignupForm';
 import LoginForm from '../LoginForm';
-<<<<<<< HEAD
-
-function Navbar(props) {
-
-
-
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-
-        <a className="navbar-brand" href="#">Andromeda</a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Login
-              </a>
-              <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li className="dropdown-item">Login Form</li>
-                <li className="dropdown-item">Signup Form</li>
-              </ul>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Sign Up
-              </a>
-              <ul className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                <li className="dropdown-item">Login Form</li>
-                <li className="dropdown-item">Signup Form</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div className='navlinks'>
-          {/* <a href='#'>Login</a>
-         <a href='#'>Sign Up</a> */}
-          <Link to='/iss'>ISS Tracker</Link>
-        </div>
-      </div>
-    </nav>
-  );
-=======
 import { useState, useEffect } from "react"
 import API from "../../utils/api"
 // import Dropdown from 'react-bootstrap/Dropdown';
@@ -159,81 +114,80 @@ function Navbar(props) {
 
   return (
     <div>test</div>
-//     <Navbar variant="dark" bg="dark" expand="lg">
-//   <Container fluid>
-//     <Navbar.Brand href="#home">Andromeda</Navbar.Brand>
-//     <Navbar.Toggle aria-controls="navbar-dark" />
-//     <Navbar.Collapse id="navbar-dark">
-//       <Nav>
-//         <NavDropdown
-//           id="nav-dropdown-dark"
-//           title="Login"
-//           menuVariant="dark"
-//         >
-//           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-//           <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-//           <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-//           <NavDropdown.Divider />
-//           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-//         </NavDropdown>
-//       </Nav>
-//     </Navbar.Collapse>
-//   </Container>
-// </Navbar>)
+    //     <Navbar variant="dark" bg="dark" expand="lg">
+    //   <Container fluid>
+    //     <Navbar.Brand href="#home">Andromeda</Navbar.Brand>
+    //     <Navbar.Toggle aria-controls="navbar-dark" />
+    //     <Navbar.Collapse id="navbar-dark">
+    //       <Nav>
+    //         <NavDropdown
+    //           id="nav-dropdown-dark"
+    //           title="Login"
+    //           menuVariant="dark"
+    //         >
+    //           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+    //           <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+    //           <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+    //           <NavDropdown.Divider />
+    //           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+    //         </NavDropdown>
+    //       </Nav>
+    //     </Navbar.Collapse>
+    //   </Container>
+    // </Navbar>)
   )
-    // <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    //   <div className="container-fluid">
+  // <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  //   <div className="container-fluid">
 
-    //     <a className="navbar-brand" href="#">Andromeda</a>
-    //     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    //       <span className="navbar-toggler-icon"></span>
-    //     </button>
-    //     <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
-    //       <ul className="navbar-nav">
-    //         {!userState.email ? (
-    //           <Dropdown>
-    //             <Dropdown.Toggle id="dropdown-basic">
-    //               Sign Up
-    //             </Dropdown.Toggle>
+  //     <a className="navbar-brand" href="#">Andromeda</a>
+  //     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  //       <span className="navbar-toggler-icon"></span>
+  //     </button>
+  //     <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+  //       <ul className="navbar-nav">
+  //         {!userState.email ? (
+  //           <Dropdown>
+  //             <Dropdown.Toggle id="dropdown-basic">
+  //               Sign Up
+  //             </Dropdown.Toggle>
 
-    //             <Dropdown.Menu>
-    //               <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    //             </Dropdown.Menu>
-    //           </Dropdown>
-              // <div className="nav-item dropdown">
-              //   <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              //     Sign Up
-              //   </a>
-              //   <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-              //     <div className="dropdown-item" >Test</div>
-              //     <SignupForm className="dropdown-item" submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
-              //   </div>
-              // </div>
-//             ) : (
-//               <li className="nav-item dropdown">
-//                 <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-//                   Log In
-//                 </a>
-//                 <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-//                   <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
-//                   <li className="dropdown-item">Login Form</li>
-//                   <li className="dropdown-item">Signup Form</li>
-//                 </div>
-//               </li>
-//             )}
-//           </ul>
-//         </div>
-//         <div className='navlinks'>
-//           {/* <a href='#'>Login</a>
-//          <a href='#'>Sign Up</a> */}
-//           <Link to="/">Home</Link>
-//           <Link to='/iss'>ISS Tracker</Link>
-//           <Link to='/nasaphoto'>APOD</Link>
-//         </div>
-//       </div>
-//     </nav>
-//   );
->>>>>>> dev
+  //             <Dropdown.Menu>
+  //               <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+  //             </Dropdown.Menu>
+  //           </Dropdown>
+  // <div className="nav-item dropdown">
+  //   <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  //     Sign Up
+  //   </a>
+  //   <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+  //     <div className="dropdown-item" >Test</div>
+  //     <SignupForm className="dropdown-item" submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} />
+  //   </div>
+  // </div>
+  //             ) : (
+  //               <li className="nav-item dropdown">
+  //                 <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  //                   Log In
+  //                 </a>
+  //                 <div className="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+  //                   <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} />
+  //                   <li className="dropdown-item">Login Form</li>
+  //                   <li className="dropdown-item">Signup Form</li>
+  //                 </div>
+  //               </li>
+  //             )}
+  //           </ul>
+  //         </div>
+  //         <div className='navlinks'>
+  //           {/* <a href='#'>Login</a>
+  //          <a href='#'>Sign Up</a> */}
+  //           <Link to="/">Home</Link>
+  //           <Link to='/iss'>ISS Tracker</Link>
+  //           <Link to='/nasaphoto'>APOD</Link>
+  //         </div>
+  //       </div>
+  //     </nav>
+  //   );
 }
 
 export default Navbar;

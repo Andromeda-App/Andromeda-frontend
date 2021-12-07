@@ -82,11 +82,11 @@ export default function SignupForm(props) {
   return (
     <form onChange={handleSignupChange} onSubmit={handleSignupSubmit} className="SignupForm">
 
-      <input id="usernameSignup" className="form-control p3" onChange={handleSignupChange} name="user_name" value={signupState.user_name} placeholder="username" />
-      <input id="emailSignup" className="form-control p3" onChange={handleSignupChange} name="email" value={signupState.email} placeholder="email" />
-      <input id="passwordSignup" className="form-control p3" onChange={handleSignupChange} name="password" value={signupState.password} type="password" placeholder="password" />
-      <input id="zipcodeSignup" className="form-control p3" onChange={handleSignupChange} name="zipCode" value={signupState.zipCode} placeholder="zipcode" />
-      <button className="btn btn-info">Signup!</button>
+      <input id="usernameSignup" className="form-control p3" onChange={handleSignupChange} name="user_name" value={signupState.user_name} placeholder="Username" />
+      <input id="emailSignup" className="form-control p3" onChange={handleSignupChange} name="email" value={signupState.email} placeholder="Email" />
+      <input id="passwordSignup" className="form-control p3" onChange={handleSignupChange} name="password" value={signupState.password} type="password" placeholder="Password" />
+      <input id="zipcodeSignup" className="form-control p3" onChange={handleSignupChange} name="zipCode" value={signupState.zipCode} placeholder="Zip Code" />
+      <button className="btn btn-info" style={{ background: 'purple', color: 'white' }}>Sign Up!</button>
     </form>
   )
 };

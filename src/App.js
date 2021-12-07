@@ -173,66 +173,66 @@ function App() {
     }
   }, []);
 
-  return (
-    <BrowserRouter>
-      <Navbar variant="dark" bg="dark" expand="lg">
-        <Container fluid>
-          <Navbar.Brand>Andromeda</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-dark" />
-          <Navbar.Collapse id="navbar-dark">
-            <Nav>
-              <NavDropdown
-                id="nav-dropdown-dark"
-                title="Login"
-                menuVariant="dark"
-                autoClose={false}
-              >
-                <NavDropdown.Item autoClose="false" href="#login">
-                  <LoginForm />
-                  {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown
-                id="nav-dropdown-dark"
-                title="Sign Up"
-                menuVariant="dark"
-                autoClose={false}
-              >
-                <NavDropdown.Item href="#signup">
-                  <SignupForm setUserState={setUserState}
-                    setToken={setToken} />
-                  {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
-                </NavDropdown.Item>
+  if (!userState.email) {
 
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    return (
+      <BrowserRouter>
+        <Navbar variant="dark" bg="dark" expand="lg">
+          <Container fluid>
+            <Navbar.Brand>Andromeda</Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbar-dark" />
+            <Navbar.Collapse id="navbar-dark">
+              <Nav>
+                <NavDropdown
+                  id="nav-dropdown-dark"
+                  title="Login"
+                  menuVariant="dark"
+                  autoClose={false}
+                >
+                  <NavDropdown.Item autoClose="false" href="#login">
+                    <LoginForm />
+                    {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  id="nav-dropdown-dark"
+                  title="Sign Up"
+                  menuVariant="dark"
+                  autoClose={false}
+                >
+                  <NavDropdown.Item href="#signup">
+                    <SignupForm setUserState={setUserState}
+                      setToken={setToken} />
+                    {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
+                  </NavDropdown.Item>
 
-      <div id="rootEl" style={{
-        backgroundImage: `url(${photoData})`,
-        backgroundPosition: 'top',
-        backgroundSize: '100% 100%',
-        backgroundRepeat: 'no-repeat'
-      }}>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
-        <Routes>
-          <Route exact path='/' element={<Home />} user={userState} token={token} />
-          {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
-          <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
-          {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
-          <Route exact path='/iss' element={<Map />} user={userState} token={token} />
-        </Routes>
-        {/* <cmeData /> */}
-        {/* <MoonCard /> */}
-      </div>
+        <div id="rootEl" style={{
+          backgroundImage: `url(${photoData})`,
+          backgroundPosition: 'top',
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat'
+        }}>
 
+          <Routes>
+            <Route exact path='/' element={<Home />} user={userState} token={token} />
+            {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
+            <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
+            {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
+            <Route exact path='/iss' element={<Map />} user={userState} token={token} />
+          </Routes>
+          {/* <cmeData /> */}
+          {/* <MoonCard /> */}
+        </div>
 
-
-      {/* <Container className="p-5 mb-4 bg-dark rounded-3">
+        {/* <Container className="p-5 mb-4 bg-dark rounded-3">
           <h1>Ready to go stargazing, {userState.user_name}?</h1>
-          <button onClick={logMeOut}>Logout</button>
+          <button onClick={logMeOut}>\</button>
           <Link to="/">Home</Link>
           <Link to={`/profile/${userState.id}`}>Profile</Link>
           <div style={{ maxWidth: 900, padding: 30 }}>
@@ -241,9 +241,9 @@ function App() {
                 <header>
                   {donki}
                 </header> */}
-      {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
-      {/* <p>{donki.explanation}</p> */}
-      {/* <pre
+        {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
+        {/* <p>{donki.explanation}</p> */}
+        {/* <pre
                   style={{
                     overflowX: "auto",
                     whiteSpace: "pre-wrap",
@@ -256,18 +256,114 @@ function App() {
               </article>
             )}
           </div> */}
-      {/* iss return */}
-      {/* <div>
+        {/* iss return */}
+        {/* <div>
             <h3>ISS Tracker</h3>
             <Map />
           </div> */}
-      {/* </Container> */}
-      {/* </div> */}
+        {/* </Container> */}
+        {/* </div> */}
 
-      {/* )} */}
+        {/* )} */}
 
-    </BrowserRouter>);
+      </BrowserRouter>);
 
+  }
+  else {
+    return (
+      <BrowserRouter>
+        <Navbar variant="dark" bg="dark" expand="lg">
+          <Container fluid>
+            <Navbar.Brand>Andromeda</Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbar-dark" />
+            <Navbar.Collapse id="navbar-dark">
+              <Nav>
+                <NavDropdown
+                  id="nav-dropdown-dark"
+                  title="Login"
+                  menuVariant="dark"
+                  autoClose={false}
+                >
+                  <NavDropdown.Item autoClose="false" href="#login">
+                    <LoginForm />
+                    {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  id="nav-dropdown-dark"
+                  title="Sign Up"
+                  menuVariant="dark"
+                  autoClose={false}
+                >
+                  <NavDropdown.Item href="#signup">
+                    <SignupForm setUserState={setUserState}
+                      setToken={setToken} />
+                    {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
+                  </NavDropdown.Item>
+
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        <div id="rootEl" style={{
+          backgroundImage: `url(${photoData})`,
+          backgroundPosition: 'top',
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat'
+        }}>
+
+          <Routes>
+            <Route exact path='/' element={<Home />} user={userState} token={token} />
+            {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
+            <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
+            {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
+            <Route exact path='/iss' element={<Map />} user={userState} token={token} />
+          </Routes>
+          {/* <cmeData /> */}
+          {/* <MoonCard /> */}
+        </div>
+
+        {/* <Container className="p-5 mb-4 bg-dark rounded-3">
+          <h1>Ready to go stargazing, {userState.user_name}?</h1>
+          <button onClick={logMeOut}>\</button>
+          <Link to="/">Home</Link>
+          <Link to={`/profile/${userState.id}`}>Profile</Link>
+          <div style={{ maxWidth: 900, padding: 30 }}>
+            {donki && (
+              <article>
+                <header>
+                  {donki}
+                </header> */}
+        {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
+        {/* <p>{donki.explanation}</p> */}
+        {/* <pre
+                  style={{
+                    overflowX: "auto",
+                    whiteSpace: "pre-wrap",
+                    wordWrap: "break-word",
+                  }}
+                >
+                  <hr />
+                  {JSON.stringify(donki, null, 2)}
+                </pre>
+              </article>
+            )}
+          </div> */}
+        {/* iss return */}
+        {/* <div>
+            <h3>ISS Tracker</h3>
+            <Map />
+          </div> */}
+        {/* </Container> */}
+        {/* </div> */}
+
+        {/* )} */}
+
+      </BrowserRouter>);
+
+  }
 }
 
 export default App;

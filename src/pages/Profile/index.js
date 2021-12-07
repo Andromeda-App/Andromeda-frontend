@@ -69,13 +69,8 @@ function Profile(props) {
                         <Col>
                             <Map style={{ height: '100%'}}/>
                         </Col>
-<<<<<<< HEAD
                         <Col>
                             <Card className="card-class" bg="dark" variant="dark">
-=======
-                         <Col>
-                        <Card bg="dark" variant="dark">
->>>>>>> dev
                                 <Card.Img variant="top" src="https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg" />
                                 <Card.Title> Coronal Mass Ejections</Card.Title>
                                 <Card.Text>

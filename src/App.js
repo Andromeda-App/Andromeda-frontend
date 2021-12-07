@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 // Page Imports
 import Home from "./pages/Home";
@@ -69,64 +69,7 @@ function App() {
     }
   }, [])
 
-  // const handleLoginChange = event => {
-  //   if (event.target.name === "email") {
-  //     setLoginFormState({
-  //       ...loginFormState,
-  //       email: event.target.value
-  //     })
-  //   } else {
-  //     setLoginFormState({
-  //       ...loginFormState,
-  //       password: event.target.value
-  //     })
-  //   }
-  // }
-  // const handleSignupChange = event => {
-  //   if (event.target.name === "email") {
-  //     setSignupFormState({
-  //       ...signupFormState,
-  //       email: event.target.value
-  //     })
-  //   } else {
-  //     setSignupFormState({
-  //       ...signupFormState,
-  //       password: event.target.value
-  //     })
-  //   }
-  // }
-
-  // const handleLoginSubmit = e => {
-  //   e.preventDefault();
-  //   API.login(loginFormState).then(res => {
-  //     console.log(res.data)
-  //     setUserState({
-  //       email: res.data.user.email,
-  //       id: res.data.user.id
-  //     })
-  //     setToken(res.data.token)
-  //     localStorage.setItem("token", res.data.token)
-  //   }).catch(err => {
-  //     console.log(err);
-  //   })
-
-  // }
-  // const handleSignupSubmit = e => {
-  //   e.preventDefault();
-  //   API.signup(signupFormState).then(res => {
-  //     API.login(signupFormState).then(res => {
-  //       console.log(res.data)
-  //       setUserState({
-  //         email: res.data.user.email,
-  //         id: res.data.user.id
-  //       })
-  //       setToken(res.data.token)
-  //       localStorage.setItem("token", res.data.token)
-  //     }).catch(err => {
-  //       console.log(err);
-  //     })
-  //   })
-  // }
+  
 
   const logMeOut = () => {
     setUserState({ email: '', id: 0 })
@@ -142,13 +85,12 @@ function App() {
       // for (let i=0; i<=cmeReturn.data.length; i++) {
       //   if (cmeReturn.data)
       // }
-
+      setCme(cmeReturn);
       //console.log(cmeReturn.data)
-      console.log(cmeReturn.data[0])
-      // if (donkiData.data[0].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
-      //   setDonki("No upcoming event")
+      // if (cmeReturn.data[0].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime === null) {
+      //   setCme("No upcoming event")
       // } else {
-      //   setDonki(donkiData.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
+      //   setCme(cmeReturn.data[33].cmeAnalyses[0].enlilList[0].estimatedShockArrivalTime)
       // }
     })
   }, []);
@@ -173,16 +115,17 @@ function App() {
     }
   }, []);
 
-  if (!userState.email) {
 
-    return (
-      <BrowserRouter>
-        <Navbar variant="dark" bg="dark" expand="lg">
-          <Container fluid>
-            <Navbar.Brand>Andromeda</Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbar-dark" />
-            <Navbar.Collapse id="navbar-dark">
-              <Nav>
+
+  return (
+    <BrowserRouter>
+      <Navbar variant="dark" bg="dark" expand="lg">
+        <Container fluid>
+          <Navbar.Brand>Andromeda</Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar-dark" />
+          <Navbar.Collapse id="navbar-dark">
+            <Nav>
+              {!userState.email ? (<>
                 <NavDropdown
                   id="nav-dropdown-dark"
                   title="Login"
@@ -190,10 +133,11 @@ function App() {
                   autoClose={false}
                 >
                   <NavDropdown.Item autoClose="false" href="#login">
-                    <LoginForm />
-                    {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
+                    <LoginForm setUserState={setUserState}
+                      setToken={setToken} />
                   </NavDropdown.Item>
                 </NavDropdown>
+
                 <NavDropdown
                   id="nav-dropdown-dark"
                   title="Sign Up"
@@ -203,34 +147,43 @@ function App() {
                   <NavDropdown.Item href="#signup">
                     <SignupForm setUserState={setUserState}
                       setToken={setToken} />
-                    {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
                   </NavDropdown.Item>
+                </NavDropdown></>
+              ) : (<>
+                <NavDropdown
+                  id="nav-dropdown-dark"
+                  title="Log Out"
+                  menuVariant="dark"
+                >
+                  <NavDropdown.Item href="#logout">
+                    <Button>Log Out</Button>
+                  </NavDropdown.Item>
+                </NavDropdown></>
+              )}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-                </NavDropdown>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
+      <div id="rootEl" style={{
+        backgroundImage: `url(${photoData})`,
+        backgroundPosition: 'top',
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat'
+      }}>
 
-        <div id="rootEl" style={{
-          backgroundImage: `url(${photoData})`,
-          backgroundPosition: 'top',
-          backgroundSize: '100% 100%',
-          backgroundRepeat: 'no-repeat'
-        }}>
+        <Routes>
+          <Route exact path='/' element={<Home />} user={userState} token={token} />
+          {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
+          <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
+          {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
+          <Route exact path='/iss' element={<Map />} user={userState} token={token} />
+        </Routes>
+        {/* <cmeData /> */}
+        {/* <MoonCard /> */}
+      </div>
 
-          <Routes>
-            <Route exact path='/' element={<Home />} user={userState} token={token} />
-            {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
-            <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
-            {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
-            <Route exact path='/iss' element={<Map />} user={userState} token={token} />
-          </Routes>
-          {/* <cmeData /> */}
-          {/* <MoonCard /> */}
-        </div>
-
-        {/* <Container className="p-5 mb-4 bg-dark rounded-3">
+      {/* <Container className="p-5 mb-4 bg-dark rounded-3">
           <h1>Ready to go stargazing, {userState.user_name}?</h1>
           <button onClick={logMeOut}>\</button>
           <Link to="/">Home</Link>
@@ -241,9 +194,9 @@ function App() {
                 <header>
                   {donki}
                 </header> */}
-        {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
-        {/* <p>{donki.explanation}</p> */}
-        {/* <pre
+      {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
+      {/* <p>{donki.explanation}</p> */}
+      {/* <pre
                   style={{
                     overflowX: "auto",
                     whiteSpace: "pre-wrap",
@@ -256,114 +209,20 @@ function App() {
               </article>
             )}
           </div> */}
-        {/* iss return */}
-        {/* <div>
+      {/* iss return */}
+      {/* <div>
             <h3>ISS Tracker</h3>
             <Map />
           </div> */}
-        {/* </Container> */}
-        {/* </div> */}
+      {/* </Container> */}
+      {/* </div> */}
 
-        {/* )} */}
+      {/* )} */}
 
-      </BrowserRouter>);
+    </BrowserRouter>);
 
-  }
-  else {
-    return (
-      <BrowserRouter>
-        <Navbar variant="dark" bg="dark" expand="lg">
-          <Container fluid>
-            <Navbar.Brand>Andromeda</Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbar-dark" />
-            <Navbar.Collapse id="navbar-dark">
-              <Nav>
-                <NavDropdown
-                  id="nav-dropdown-dark"
-                  title="Login"
-                  menuVariant="dark"
-                  autoClose={false}
-                >
-                  <NavDropdown.Item autoClose="false" href="#login">
-                    <LoginForm />
-                    {/* <LoginForm submit={handleLoginSubmit} change={handleLoginChange} loginState={loginFormState} /> */}
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown
-                  id="nav-dropdown-dark"
-                  title="Sign Up"
-                  menuVariant="dark"
-                  autoClose={false}
-                >
-                  <NavDropdown.Item href="#signup">
-                    <SignupForm setUserState={setUserState}
-                      setToken={setToken} />
-                    {/* <SignupForm submit={handleSignupSubmit} change={handleSignupChange} signupState={signupFormState} /> */}
-                  </NavDropdown.Item>
 
-                </NavDropdown>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-
-        <div id="rootEl" style={{
-          backgroundImage: `url(${photoData})`,
-          backgroundPosition: 'top',
-          backgroundSize: '100% 100%',
-          backgroundRepeat: 'no-repeat'
-        }}>
-
-          <Routes>
-            <Route exact path='/' element={<Home />} user={userState} token={token} />
-            {/* <Route exact path='/preferences' element={<Preferences />} user={userState} token={token} /> */}
-            <Route exact path='/profile' element={<Profile />} user={userState} token={token} />
-            {/* <Route path="/nasaphoto" element={<NasaPhoto />}></Route> */}
-            <Route exact path='/iss' element={<Map />} user={userState} token={token} />
-          </Routes>
-          {/* <cmeData /> */}
-          {/* <MoonCard /> */}
-        </div>
-
-        {/* <Container className="p-5 mb-4 bg-dark rounded-3">
-          <h1>Ready to go stargazing, {userState.user_name}?</h1>
-          <button onClick={logMeOut}>\</button>
-          <Link to="/">Home</Link>
-          <Link to={`/profile/${userState.id}`}>Profile</Link>
-          <div style={{ maxWidth: 900, padding: 30 }}>
-            {donki && (
-              <article>
-                <header>
-                  {donki}
-                </header> */}
-        {/* <img src="" alt="DONKI" width="800" height="auto" /> */}
-        {/* <p>{donki.explanation}</p> */}
-        {/* <pre
-                  style={{
-                    overflowX: "auto",
-                    whiteSpace: "pre-wrap",
-                    wordWrap: "break-word",
-                  }}
-                >
-                  <hr />
-                  {JSON.stringify(donki, null, 2)}
-                </pre>
-              </article>
-            )}
-          </div> */}
-        {/* iss return */}
-        {/* <div>
-            <h3>ISS Tracker</h3>
-            <Map />
-          </div> */}
-        {/* </Container> */}
-        {/* </div> */}
-
-        {/* )} */}
-
-      </BrowserRouter>);
-
-  }
 }
+
 
 export default App;

@@ -22,6 +22,5 @@ export default {
     getCME() {
         console.log(axios.get(`${nasaEndpoint}`))
         return axios.get(`${nasaEndpoint}`)
-
     },
 }

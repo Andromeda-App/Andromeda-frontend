@@ -108,9 +108,10 @@ function App() {
       const data = await res.json();
       if (data.url) {
         setPhotoData(data.url);
+        setPhotoData(`./assets/background.jpg`)
       }
       else {
-        setPhotoData(`./assets/background.png`)
+        setPhotoData(`./assets/background.jpg`)
       }
     }
   }, []);
